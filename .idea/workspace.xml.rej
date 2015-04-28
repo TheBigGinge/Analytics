@@ -1,0 +1,546 @@
+--- workspace.xml
++++ workspace.xml
+@@ -23,6 +23,6 @@
+   </component>
+   <component name="FileEditorManager">
+     <leaf>
+-      <file leaf-file-name="beginning.py" pinned="false" current="true" current-in-tab="true">
+-        <entry file="file://$PROJECT_DIR$/DataAssignments/ryanm/beginning.py">
++      <file leaf-file-name="data_peruse.py" pinned="false" current="false" current-in-tab="false">
++        <entry file="file://$PROJECT_DIR$/RyanBot/TaskSurfacingData/data_peruse.py">
+           <provider selected="true" editor-type-id="text-editor">
+@@ -28,10 +28,8 @@
+           <provider selected="true" editor-type-id="text-editor">
+-            <state vertical-scroll-proportion="0.38931298" vertical-offset="0" max-vertical-offset="1054">
+-              <caret line="21" column="18" selection-start-line="21" selection-start-column="18" selection-end-line="21" selection-end-column="18" />
+-              <folding>
+-                <element signature="e#0#37#0" expanded="true" />
+-              </folding>
++            <state vertical-scroll-proportion="0.0" vertical-offset="289" max-vertical-offset="408">
++              <caret line="17" column="0" selection-start-line="17" selection-start-column="0" selection-end-line="17" selection-end-column="0" />
++              <folding />
+             </state>
+           </provider>
+         </entry>
+       </file>
+@@ -34,7 +32,7 @@
+             </state>
+           </provider>
+         </entry>
+       </file>
+-      <file leaf-file-name="boot_strap.py" pinned="false" current="false" current-in-tab="false">
+-        <entry file="file://$PROJECT_DIR$/Statistics/boot_strap.py">
++      <file leaf-file-name="conversion_alert.py" pinned="false" current="false" current-in-tab="false">
++        <entry file="file://$PROJECT_DIR$/AutoAlertAnalytics/conversion_alert.py">
+           <provider selected="true" editor-type-id="text-editor">
+@@ -40,6 +38,56 @@
+           <provider selected="true" editor-type-id="text-editor">
+-            <state vertical-scroll-proportion="0.0" vertical-offset="117" max-vertical-offset="986">
+-              <caret line="27" column="81" selection-start-line="27" selection-start-column="81" selection-end-line="27" selection-end-column="81" />
++            <state vertical-scroll-proportion="0.0" vertical-offset="1089" max-vertical-offset="3213">
++              <caret line="87" column="58" selection-start-line="87" selection-start-column="58" selection-end-line="87" selection-end-column="58" />
++              <folding />
++            </state>
++          </provider>
++        </entry>
++      </file>
++      <file leaf-file-name="database.py" pinned="false" current="false" current-in-tab="false">
++        <entry file="file://$PROJECT_DIR$/AnalyticsTools/ConversionMetricsGUI/database.py">
++          <provider selected="true" editor-type-id="text-editor">
++            <state vertical-scroll-proportion="0.0" vertical-offset="408" max-vertical-offset="5763">
++              <caret line="33" column="65" selection-start-line="33" selection-start-column="65" selection-end-line="33" selection-end-column="65" />
++              <folding />
++            </state>
++          </provider>
++        </entry>
++      </file>
++      <file leaf-file-name="db_testing.py" pinned="false" current="true" current-in-tab="true">
++        <entry file="file://$PROJECT_DIR$/RyanBot/TaskSurfacingData/db_testing.py">
++          <provider selected="true" editor-type-id="text-editor">
++            <state vertical-scroll-proportion="0.35223556" vertical-offset="0" max-vertical-offset="917">
++              <caret line="22" column="17" selection-start-line="22" selection-start-column="9" selection-end-line="22" selection-end-column="17" />
++              <folding />
++            </state>
++          </provider>
++        </entry>
++      </file>
++      <file leaf-file-name="log_iterator.py" pinned="false" current="false" current-in-tab="false">
++        <entry file="file://$PROJECT_DIR$/LogFileTools/log_iterator.py">
++          <provider selected="true" editor-type-id="text-editor">
++            <state vertical-scroll-proportion="0.0" vertical-offset="51" max-vertical-offset="2414">
++              <caret line="3" column="0" selection-start-line="3" selection-start-column="0" selection-end-line="3" selection-end-column="0" />
++              <folding />
++            </state>
++          </provider>
++        </entry>
++      </file>
++      <file leaf-file-name="task_support.py" pinned="false" current="false" current-in-tab="false">
++        <entry file="file://$PROJECT_DIR$/RyanBot/TaskSurfacingData/task_support.py">
++          <provider selected="true" editor-type-id="text-editor">
++            <state vertical-scroll-proportion="0.0" vertical-offset="272" max-vertical-offset="374">
++              <caret line="16" column="42" selection-start-line="16" selection-start-column="42" selection-end-line="16" selection-end-column="42" />
++              <folding />
++            </state>
++          </provider>
++        </entry>
++      </file>
++      <file leaf-file-name="file_work.py" pinned="false" current="false" current-in-tab="false">
++        <entry file="file://$PROJECT_DIR$/FileHandling/file_work.py">
++          <provider selected="true" editor-type-id="text-editor">
++            <state vertical-scroll-proportion="0.0" vertical-offset="1326" max-vertical-offset="1428">
++              <caret line="78" column="30" selection-start-line="78" selection-start-column="30" selection-end-line="78" selection-end-column="30" />
+               <folding />
+             </state>
+           </provider>
+@@ -55,21 +103,9 @@
+   <component name="IdeDocumentHistory">
+     <option name="changedFiles">
+       <list>
+-        <option value="$PROJECT_DIR$/SqlTools/payscale_replicated.py" />
+-        <option value="$PROJECT_DIR$/DateFunctions/datetimes_in.py" />
+-        <option value="$PROJECT_DIR$/AnalyticsTools/SiteAbusers/sql_check.py" />
+-        <option value="$USER_HOME$/Desktop/APIscripttest3.py" />
+-        <option value="$PROJECT_DIR$/AnalyticsTools/SiteAbusers/site_abuse.py" />
+-        <option value="$PROJECT_DIR$/AutoAlertAnalytics/DataDistributions/DataDistGui/gui_classes.py" />
+-        <option value="$PROJECT_DIR$/AutoAlertAnalytics/DataDistributions/DataDistGui/pull_stats.py" />
+-        <option value="$PROJECT_DIR$/KaylaBot/QuestionDashboard/gui_code_behind.py" />
+-        <option value="$PROJECT_DIR$/KaylaBot/QuestionDashboard/question_database.py" />
+-        <option value="$PROJECT_DIR$/KaylaBot/QuestionDashboard/database_utilities.py" />
+-        <option value="$PROJECT_DIR$/DataAssignments/mobile_questions.py" />
+-        <option value="$PROJECT_DIR$/DataAssignments/ryanm/mobile_questions.py" />
+         <option value="$PROJECT_DIR$/DataAssignments/ryanm/mobile_survey.py" />
+         <option value="$PROJECT_DIR$/KaylaBot/QuickMobileQuery/guid_test.py" />
+         <option value="$PROJECT_DIR$/KaylaBot/QuickMobileQuery/mobile_questions.py" />
+         <option value="$PROJECT_DIR$/Statistics/jaccard_index.py" />
+         <option value="$PROJECT_DIR$/DataAssignments/ryanm/employer_dupes.py" />
+         <option value="$PROJECT_DIR$/RyanBot/JobRollupSuggesting/suggest_rollups.py" />
+@@ -159,20 +207,6 @@
+               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+             </PATH_ELEMENT>
+           </PATH>
+-          <PATH>
+-            <PATH_ELEMENT>
+-              <option name="myItemId" value="PayScaleAnalytics" />
+-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+-            </PATH_ELEMENT>
+-            <PATH_ELEMENT>
+-              <option name="myItemId" value="PayScaleAnalytics" />
+-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+-            </PATH_ELEMENT>
+-            <PATH_ELEMENT>
+-              <option name="myItemId" value="Statistics" />
+-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+-            </PATH_ELEMENT>
+-          </PATH>
+         </subPane>
+       </pane>
+       <pane id="Scope" />
+@@ -467,10 +501,10 @@
+     </todo-panel>
+   </component>
+   <component name="ToolWindowManager">
+-    <frame x="1911" y="-9" width="1938" height="1098" extended-state="7" />
++    <frame x="1911" y="-9" width="1938" height="1098" extended-state="6" />
+     <editor active="true" />
+     <layout>
+       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32947367" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
+       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.09251337" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+@@ -471,10 +505,10 @@
+     <editor active="true" />
+     <layout>
+       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32947367" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
+       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.09251337" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.114438504" sideWeight="0.67189133" order="0" side_tool="false" content_ui="combo" />
++      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.13101605" sideWeight="0.67189133" order="0" side_tool="false" content_ui="combo" />
+       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
+       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="1" side_tool="true" content_ui="tabs" />
+       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3299595" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
+@@ -478,7 +512,7 @@
+       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
+       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="1" side_tool="true" content_ui="tabs" />
+       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3299595" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
+-      <window_info id="Run" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.38021392" sideWeight="0.67189133" order="3" side_tool="false" content_ui="tabs" />
++      <window_info id="Run" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.3080214" sideWeight="0.67189133" order="3" side_tool="false" content_ui="tabs" />
+       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
+@@ -482,16 +516,5 @@
+       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
+-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32421052" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
+-      <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+-      <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+-      <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
+-      <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
+-    </layout>
+-    <layout-to-restore>
+-      <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+-      <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+-      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+-      <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
+       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32421052" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
+@@ -506,7 +522,6 @@
+       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
+       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
+-      <window_info id="Run" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.26898396" sideWeight="0.67189133" order="3" side_tool="false" content_ui="tabs" />
+-    </layout-to-restore>
++    </layout>
+   </component>
+   <component name="Vcs.Log.UiProperties">
+     <option name="RECENTLY_FILTERED_USER_GROUPS">
+@@ -558,5 +573,5 @@
+     </breakpoint-manager>
+   </component>
+   <component name="editorHistoryManager">
+-    <entry file="file://$PROJECT_DIR$/KaylaBot/QuickMobileQuery/mobile_questions.py">
++    <entry file="file://$PROJECT_DIR$/KaylaBot/SiteAbusers/site_abuse.py">
+       <provider selected="true" editor-type-id="text-editor">
+@@ -562,6 +577,6 @@
+       <provider selected="true" editor-type-id="text-editor">
+-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="136">
+-          <caret line="0" column="41" selection-start-line="0" selection-start-column="12" selection-end-line="0" selection-end-column="41" />
++        <state vertical-scroll-proportion="0.0" vertical-offset="255" max-vertical-offset="1649">
++          <caret line="22" column="11" selection-start-line="22" selection-start-column="11" selection-end-line="22" selection-end-column="11" />
+         </state>
+       </provider>
+     </entry>
+@@ -565,5 +580,5 @@
+         </state>
+       </provider>
+     </entry>
+-    <entry file="file://$PROJECT_DIR$/SqlTools/payscale_replicated.py">
++    <entry file="file://C:/Python27/Lib/site-packages/splunklib/binding.py">
+       <provider selected="true" editor-type-id="text-editor">
+@@ -569,6 +584,6 @@
+       <provider selected="true" editor-type-id="text-editor">
+-        <state vertical-scroll-proportion="0.81461287" vertical-offset="35" max-vertical-offset="952">
+-          <caret line="46" column="0" selection-start-line="46" selection-start-column="0" selection-end-line="46" selection-end-column="0" />
++        <state vertical-scroll-proportion="0.0" vertical-offset="18276" max-vertical-offset="20893">
++          <caret line="1108" column="0" selection-start-line="1108" selection-start-column="0" selection-end-line="1108" selection-end-column="0" />
+         </state>
+       </provider>
+     </entry>
+@@ -572,5 +587,5 @@
+         </state>
+       </provider>
+     </entry>
+-    <entry file="file://$PROJECT_DIR$/KaylaBot/QuestionDashboard/data_extract_thread.py">
++    <entry file="file://C:/Python27/Lib/site-packages/splunklib/results.py">
+       <provider selected="true" editor-type-id="text-editor">
+@@ -576,6 +591,6 @@
+       <provider selected="true" editor-type-id="text-editor">
+-        <state vertical-scroll-proportion="0.098076925" vertical-offset="1071" max-vertical-offset="3145">
+-          <caret line="77" column="0" selection-start-line="77" selection-start-column="0" selection-end-line="77" selection-end-column="0" />
++        <state vertical-scroll-proportion="0.0174482" vertical-offset="2296" max-vertical-offset="4692">
++          <caret line="136" column="31" selection-start-line="136" selection-start-column="31" selection-end-line="136" selection-end-column="31" />
+         </state>
+       </provider>
+     </entry>
+@@ -579,5 +594,5 @@
+         </state>
+       </provider>
+     </entry>
+-    <entry file="file://$PROJECT_DIR$/KaylaBot/QuestionDashboard/question_gui.py">
++    <entry file="file://$PROJECT_DIR$/DateFunctions/date_functions.py">
+       <provider selected="true" editor-type-id="text-editor">
+@@ -583,6 +598,6 @@
+       <provider selected="true" editor-type-id="text-editor">
+-        <state vertical-scroll-proportion="0.20392585" vertical-offset="0" max-vertical-offset="4284">
+-          <caret line="20" column="23" selection-start-line="20" selection-start-column="23" selection-end-line="20" selection-end-column="23" />
++        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="2873">
++          <caret line="157" column="8" selection-start-line="157" selection-start-column="8" selection-end-line="157" selection-end-column="8" />
+         </state>
+       </provider>
+     </entry>
+@@ -586,5 +601,5 @@
+         </state>
+       </provider>
+     </entry>
+-    <entry file="file://$PROJECT_DIR$/Test/debug_logs.py">
++    <entry file="file://$PROJECT_DIR$/RyanBot/LAM/log_file_re.py">
+       <provider selected="true" editor-type-id="text-editor">
+@@ -590,6 +605,6 @@
+       <provider selected="true" editor-type-id="text-editor">
+-        <state vertical-scroll-proportion="0.09269357" vertical-offset="0" max-vertical-offset="917">
+-          <caret line="5" column="0" selection-start-line="5" selection-start-column="0" selection-end-line="5" selection-end-column="0" />
++        <state vertical-scroll-proportion="0.20392585" vertical-offset="0" max-vertical-offset="917">
++          <caret line="11" column="0" selection-start-line="11" selection-start-column="0" selection-end-line="11" selection-end-column="0" />
+         </state>
+       </provider>
+     </entry>
+@@ -593,5 +608,5 @@
+         </state>
+       </provider>
+     </entry>
+-    <entry file="file://$PROJECT_DIR$/DataAssignments/ryanm/email_classify.py">
++    <entry file="file://$PROJECT_DIR$/RyanBot/LAM/finalize_the_lam.py">
+       <provider selected="true" editor-type-id="text-editor">
+@@ -597,6 +612,6 @@
+       <provider selected="true" editor-type-id="text-editor">
+-        <state vertical-scroll-proportion="1.4089422" vertical-offset="0" max-vertical-offset="2040">
+-          <caret line="76" column="43" selection-start-line="76" selection-start-column="43" selection-end-line="76" selection-end-column="43" />
++        <state vertical-scroll-proportion="0.16684842" vertical-offset="0" max-vertical-offset="917">
++          <caret line="11" column="0" selection-start-line="11" selection-start-column="0" selection-end-line="11" selection-end-column="0" />
+         </state>
+       </provider>
+     </entry>
+@@ -600,24 +615,10 @@
+         </state>
+       </provider>
+     </entry>
+-    <entry file="file://$PROJECT_DIR$/KaylaBot/SiteAbusers/site_abuse.py">
+-      <provider selected="true" editor-type-id="text-editor">
+-        <state vertical-scroll-proportion="0.58669573" vertical-offset="125" max-vertical-offset="1632">
+-          <caret line="46" column="39" selection-start-line="46" selection-start-column="39" selection-end-line="46" selection-end-column="39" />
+-        </state>
+-      </provider>
+-    </entry>
+-    <entry file="file://$PROJECT_DIR$/RyanBot/Aequitas/aequitas_script.py">
+-      <provider selected="true" editor-type-id="text-editor">
+-        <state vertical-scroll-proportion="-3.7968037" vertical-offset="3326" max-vertical-offset="6103">
+-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+-        </state>
+-      </provider>
+-    </entry>
+-    <entry file="file://$PROJECT_DIR$/RyanBot/PspSplunkLogMetrics/splunk_code_behind.py">
++    <entry file="file://$PROJECT_DIR$/DateFunctions/unix_time.py">
+       <provider selected="true" editor-type-id="text-editor">
+         <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="917">
+           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+         </state>
+       </provider>
+     </entry>
+@@ -670,170 +900,13 @@
+         </state>
+       </provider>
+     </entry>
+     <entry file="file://$PROJECT_DIR$/LogFileTools/log_iterator.py">
+       <provider selected="true" editor-type-id="text-editor">
+-        <state vertical-scroll-proportion="0.20922385" vertical-offset="1055" max-vertical-offset="2040">
+-          <caret line="75" column="46" selection-start-line="75" selection-start-column="46" selection-end-line="75" selection-end-column="46" />
+-        </state>
+-      </provider>
+-    </entry>
+-    <entry file="file://$PROJECT_DIR$/DataAssignments/ryanm/file_test.py">
+-      <provider selected="true" editor-type-id="text-editor">
+-        <state vertical-scroll-proportion="0.09269357" vertical-offset="0" max-vertical-offset="917">
+-          <caret line="5" column="9" selection-start-line="5" selection-start-column="9" selection-end-line="5" selection-end-column="9" />
+-        </state>
+-      </provider>
+-    </entry>
+-    <entry file="file://$PROJECT_DIR$/DataAssignments/ryanm/probability_data.py">
+-      <provider selected="true" editor-type-id="text-editor">
+-        <state vertical-scroll-proportion="-0.5291971" vertical-offset="477" max-vertical-offset="1445">
+-          <caret line="14" column="19" selection-start-line="14" selection-start-column="19" selection-end-line="14" selection-end-column="19" />
+-        </state>
+-      </provider>
+-    </entry>
+-    <entry file="file://$PROJECT_DIR$/DataAssignments/ryanm/probability_data_alt.py">
+-      <provider selected="true" editor-type-id="text-editor">
+-        <state vertical-scroll-proportion="0.58759123" vertical-offset="324" max-vertical-offset="1292">
+-          <caret line="41" column="89" selection-start-line="41" selection-start-column="38" selection-end-line="41" selection-end-column="89" />
+-        </state>
+-      </provider>
+-    </entry>
+-    <entry file="file://$PROJECT_DIR$/DataAssignments/ryanm/prob_data_three.py">
+-      <provider selected="true" editor-type-id="text-editor">
+-        <state vertical-scroll-proportion="0.088541664" vertical-offset="0" max-vertical-offset="576">
+-          <caret line="6" column="0" selection-start-line="6" selection-start-column="0" selection-end-line="6" selection-end-column="0" />
+-        </state>
+-      </provider>
+-    </entry>
+-    <entry file="file://$PROJECT_DIR$/AnalysisTool/extract_data_xml.py">
+-      <provider selected="true" editor-type-id="text-editor">
+-        <state vertical-scroll-proportion="0.5736783" vertical-offset="0" max-vertical-offset="1190">
+-          <caret line="33" column="44" selection-start-line="33" selection-start-column="44" selection-end-line="33" selection-end-column="44" />
+-        </state>
+-      </provider>
+-    </entry>
+-    <entry file="file://$PROJECT_DIR$/Statistics/entropy.py">
+-      <provider selected="true" editor-type-id="text-editor">
+-        <state vertical-scroll-proportion="2.7019122" vertical-offset="80" max-vertical-offset="2652">
+-          <caret line="146" column="0" selection-start-line="146" selection-start-column="0" selection-end-line="146" selection-end-column="0" />
+-        </state>
+-      </provider>
+-    </entry>
+-    <entry file="file://C:/Python27/Lib/site-packages/nltk-3.0.0b1-py2.7.egg/nltk/tag/__init__.py">
+-      <provider selected="true" editor-type-id="text-editor">
+-        <state vertical-scroll-proportion="0.62922573" vertical-offset="834" max-vertical-offset="1751">
+-          <caret line="100" column="0" selection-start-line="100" selection-start-column="0" selection-end-line="100" selection-end-column="0" />
+-        </state>
+-      </provider>
+-    </entry>
+-    <entry file="file://C:/Python27/Lib/site-packages/nltk-3.0.0b1-py2.7.egg/nltk/tag/sequential.py">
+-      <provider selected="true" editor-type-id="text-editor">
+-        <state vertical-scroll-proportion="0.33260632" vertical-offset="545" max-vertical-offset="12614">
+-          <caret line="60" column="0" selection-start-line="60" selection-start-column="0" selection-end-line="60" selection-end-column="0" />
+-        </state>
+-      </provider>
+-    </entry>
+-    <entry file="file://C:/Python27/Lib/encodings/utf_8.py">
+-      <provider selected="true" editor-type-id="text-editor">
+-        <state vertical-scroll-proportion="0.2780807" vertical-offset="0" max-vertical-offset="917">
+-          <caret line="15" column="0" selection-start-line="15" selection-start-column="0" selection-end-line="15" selection-end-column="0" />
+-        </state>
+-      </provider>
+-    </entry>
+-    <entry file="file://C:/Python27/Lib/site-packages/textclean/textclean.py">
+-      <provider selected="true" editor-type-id="text-editor">
+-        <state vertical-scroll-proportion="0.09269357" vertical-offset="0" max-vertical-offset="917">
+-          <caret line="7" column="8" selection-start-line="7" selection-start-column="8" selection-end-line="7" selection-end-column="8" />
+-        </state>
+-      </provider>
+-    </entry>
+-    <entry file="file://$PROJECT_DIR$/DataAssignments/ryanm/failed_psp_reports.py">
+-      <provider selected="true" editor-type-id="text-editor">
+-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="748">
+-          <caret line="36" column="45" selection-start-line="36" selection-start-column="45" selection-end-line="36" selection-end-column="45" />
+-        </state>
+-      </provider>
+-    </entry>
+-    <entry file="file://$PROJECT_DIR$/DataAssignments/ryanm/task_tagging_bigrams.py">
+-      <provider selected="true" editor-type-id="text-editor">
+-        <state vertical-scroll-proportion="0.8244275" vertical-offset="995" max-vertical-offset="2380">
+-          <caret line="108" column="0" selection-start-line="108" selection-start-column="0" selection-end-line="108" selection-end-column="0" />
+-        </state>
+-      </provider>
+-    </entry>
+-    <entry file="file://$PROJECT_DIR$/DataAssignments/ryanm/task_tagging.py">
+-      <provider selected="true" editor-type-id="text-editor">
+-        <state vertical-scroll-proportion="0.7033806" vertical-offset="647" max-vertical-offset="1649">
+-          <caret line="81" column="92" selection-start-line="81" selection-start-column="31" selection-end-line="81" selection-end-column="92" />
+-        </state>
+-      </provider>
+-    </entry>
+-    <entry file="file://$PROJECT_DIR$/FileHandling/file_work.py">
+-      <provider selected="true" editor-type-id="text-editor">
+-        <state vertical-scroll-proportion="0.2780807" vertical-offset="0" max-vertical-offset="917">
+-          <caret line="16" column="0" selection-start-line="16" selection-start-column="0" selection-end-line="16" selection-end-column="0" />
+-        </state>
+-      </provider>
+-    </entry>
+-    <entry file="file://$PROJECT_DIR$/RyanBot/JobRollupSuggesting/run_suggestions.py">
+-      <provider selected="true" editor-type-id="text-editor">
+-        <state vertical-scroll-proportion="0.037077427" vertical-offset="0" max-vertical-offset="917">
+-          <caret line="4" column="0" selection-start-line="4" selection-start-column="0" selection-end-line="4" selection-end-column="0" />
+-        </state>
+-      </provider>
+-    </entry>
+-    <entry file="file://$PROJECT_DIR$/RyanBot/JobRollupSuggesting/unprompted.py">
+-      <provider selected="true" editor-type-id="text-editor">
+-        <state vertical-scroll-proportion="0.22246456" vertical-offset="0" max-vertical-offset="1785">
+-          <caret line="19" column="13" selection-start-line="19" selection-start-column="13" selection-end-line="19" selection-end-column="13" />
+-        </state>
+-      </provider>
+-    </entry>
+-    <entry file="file://$PROJECT_DIR$/RyanBot/JobRollupSuggesting/suggestion_helper.py">
+-      <provider selected="true" editor-type-id="text-editor">
+-        <state vertical-scroll-proportion="0.4438386" vertical-offset="137" max-vertical-offset="1071">
+-          <caret line="36" column="33" selection-start-line="36" selection-start-column="33" selection-end-line="36" selection-end-column="33" />
+-        </state>
+-      </provider>
+-    </entry>
+-    <entry file="file://$PROJECT_DIR$/RyanBot/JobRollupSuggesting/suggest.py">
+-      <provider selected="true" editor-type-id="text-editor">
+-        <state vertical-scroll-proportion="4.8015265" vertical-offset="0" max-vertical-offset="5389">
+-          <caret line="259" column="38" selection-start-line="259" selection-start-column="38" selection-end-line="259" selection-end-column="38" />
+-          <folding>
+-            <element signature="e#0#35#0" expanded="false" />
+-          </folding>
+-        </state>
+-      </provider>
+-    </entry>
+-    <entry file="file://$PROJECT_DIR$/RyanBot/ConsumerLogMetrics/log_data.py">
+-      <provider selected="true" editor-type-id="text-editor">
+-        <state vertical-scroll-proportion="0.31515813" vertical-offset="1785" max-vertical-offset="5508">
+-          <caret line="122" column="28" selection-start-line="122" selection-start-column="28" selection-end-line="122" selection-end-column="28" />
+-        </state>
+-      </provider>
+-    </entry>
+-    <entry file="file://$PROJECT_DIR$/RyanBot/BogusProfiles/run_bogus.py">
+-      <provider selected="true" editor-type-id="text-editor">
+-        <state vertical-scroll-proportion="0.05452563" vertical-offset="1" max-vertical-offset="5797">
+-          <caret line="3" column="11" selection-start-line="3" selection-start-column="11" selection-end-line="3" selection-end-column="11" />
+-        </state>
+-      </provider>
+-    </entry>
+-    <entry file="file://$PROJECT_DIR$/RyanBot/ConsumerLogMetrics/run_metrics.py">
+-      <provider selected="true" editor-type-id="text-editor">
+-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="731">
+-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+-        </state>
+-      </provider>
+-    </entry>
+-    <entry file="file://$PROJECT_DIR$/AutoAlertAnalytics/data_distribution_alert.py">
+-      <provider selected="true" editor-type-id="text-editor">
+-        <state vertical-scroll-proportion="0.074154854" vertical-offset="0" max-vertical-offset="3179">
+-          <caret line="4" column="9" selection-start-line="4" selection-start-column="9" selection-end-line="4" selection-end-column="9" />
++        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="2414">
++          <caret line="3" column="0" selection-start-line="3" selection-start-column="0" selection-end-line="3" selection-end-column="0" />
+           <folding />
+         </state>
+       </provider>
+     </entry>
+     <entry file="file://$PROJECT_DIR$/AutoAlertAnalytics/conversion_alert.py">
+       <provider selected="true" editor-type-id="text-editor">
+@@ -834,11 +907,12 @@
+           <folding />
+         </state>
+       </provider>
+     </entry>
+     <entry file="file://$PROJECT_DIR$/AutoAlertAnalytics/conversion_alert.py">
+       <provider selected="true" editor-type-id="text-editor">
+-        <state vertical-scroll-proportion="0.14830971" vertical-offset="0" max-vertical-offset="3213">
+-          <caret line="8" column="38" selection-start-line="8" selection-start-column="38" selection-end-line="8" selection-end-column="38" />
++        <state vertical-scroll-proportion="0.0" vertical-offset="1089" max-vertical-offset="3213">
++          <caret line="87" column="58" selection-start-line="87" selection-start-column="58" selection-end-line="87" selection-end-column="58" />
++          <folding />
+         </state>
+       </provider>
+     </entry>
+@@ -898,14 +930,7 @@
+       <provider selected="true" editor-type-id="text-editor">
+-        <state vertical-scroll-proportion="0.0" vertical-offset="2091" max-vertical-offset="3502">
+-          <caret line="136" column="26" selection-start-line="136" selection-start-column="6" selection-end-line="136" selection-end-column="26" />
+-        </state>
+-      </provider>
+-    </entry>
+-    <entry file="file://$PROJECT_DIR$/Statistics/boot_strap.py">
+-      <provider selected="true" editor-type-id="text-editor">
+-        <state vertical-scroll-proportion="0.0" vertical-offset="117" max-vertical-offset="986">
+-          <caret line="27" column="81" selection-start-line="27" selection-start-column="81" selection-end-line="27" selection-end-column="81" />
++        <state vertical-scroll-proportion="0.0" vertical-offset="408" max-vertical-offset="5763">
++          <caret line="33" column="65" selection-start-line="33" selection-start-column="65" selection-end-line="33" selection-end-column="65" />
+           <folding />
+         </state>
+       </provider>
+     </entry>
+@@ -913,19 +938,7 @@
+       <provider selected="true" editor-type-id="text-editor">
+-        <state vertical-scroll-proportion="0.0" vertical-offset="545" max-vertical-offset="1989">
+-          <caret line="52" column="18" selection-start-line="52" selection-start-column="18" selection-end-line="52" selection-end-column="18" />
+-          <folding>
+-            <element signature="e#0#32#0" expanded="true" />
+-          </folding>
+-        </state>
+-      </provider>
+-    </entry>
+-    <entry file="file://$PROJECT_DIR$/DataAssignments/ryanm/beginning.py">
+-      <provider selected="true" editor-type-id="text-editor">
+-        <state vertical-scroll-proportion="0.38931298" vertical-offset="0" max-vertical-offset="1054">
+-          <caret line="21" column="18" selection-start-line="21" selection-start-column="18" selection-end-line="21" selection-end-column="18" />
+-          <folding>
+-            <element signature="e#0#37#0" expanded="true" />
+-          </folding>
++        <state vertical-scroll-proportion="0.35223556" vertical-offset="0" max-vertical-offset="917">
++          <caret line="22" column="17" selection-start-line="22" selection-start-column="9" selection-end-line="22" selection-end-column="17" />
++          <folding />
+         </state>
+       </provider>
+     </entry>
