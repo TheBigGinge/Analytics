@@ -121,13 +121,13 @@ def auto_email_alert():
                  "JobOffer_"]
     #FROM = "DataAlerts@payscale.com"
     FROM = "Data Alerts@payscale.com"
-    TO = ["Data Team@payscale.com"]
+    TO = ["RyanM@payscale.com"]
 
     attachment = 'C:\\users\\ryanm\\desktop\\JL.jpg'
 
     msg = MIMEMultipart()
     msg['Subject'] = "Conversion Level Alert"
-    msg['To'] = 'Data Team@payscale.com'
+    msg['To'] = 'RyanM@payscale.com'
 
     body = ""
     main_message = "The weekly conversion level tests have finished. You can find them at %s, %s, and %s" % \

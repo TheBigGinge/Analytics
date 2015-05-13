@@ -241,6 +241,30 @@ class DashboardSupport:
 
         return task_dict
 
+    def create_deduped_task_dictionary(self):
+        task_dict = {}
+
+        with open(self.automated_files + 'Current Tasks.csv', 'rb') as R:
+            reader = csv.reader(R, delimiter='\t')
+            names = reader.next()
+
+            for row in reader:
+                title = row[names.index("JobRollup")].lower()
+                task = row[names.index("Task")]
+
+                if title not in task_dict.keys():
+                    task_dict[title] = []
+                    task_dict[title].append(task)
+                else:
+                    task_dict[title].append(task)
+
+        for key in task_dict:
+            task_list = task_dict[key]
+            deduped = list(set(task_list))
+            task_dict[key] = deduped
+
+        return task_dict
+
 
     @staticmethod
     def pull_no_good_strings():

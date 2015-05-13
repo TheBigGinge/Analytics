@@ -89,12 +89,12 @@ class ExtractDataThread(QtCore.QThread):
 
     def pull_xml_data_to_dict(self, start_date):
         all_files = os.listdir(output_path)
-
+        self.change_dict_values()
         for files in all_files:
             if '.zip' not in files:
                 extract.ExtractXMLData(files).fix_xml_encoding(output_path)
                 self.xml_handler = extract.ExtractXMLData(output_path + files).row_name_entry_handler(header=True)
-                self.change_dict_values()
+                self.change_handler_values()
 
     def change_dict_values(self):
 
@@ -102,6 +102,7 @@ class ExtractDataThread(QtCore.QThread):
             question = question.replace("/", "_").replace(" ", "_").replace("-", "_")
             self.numerator_dict[question] = {}
 
+    def change_handler_values(self):
         for key_value in self.xml_handler.count_dictionary:
 
             question = self.xml_handler.title_header.replace("/", "_").replace(" ", "_").replace("-", "_")

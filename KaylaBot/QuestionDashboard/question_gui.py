@@ -202,18 +202,40 @@ class UiMainWindow(object):
 
     def write_overall_to_file(self, writer):
 
-        header = ['Date', 'Question', 'Overall', 'Active Profiles', 'Bailed 20', 'Saw 20', 'Saw MyPayScale',
+        header = ['Date', 'Question', 'Active Profiles', 'Bailed 20', 'Saw 20', 'Saw MyPayScale',
                   'Total Counts']
         writer.writerow(header)
+        use_date = self.start_date.date().toPyDate().strftime("%Y%m")
+
+        overall_dictionary = {}
 
         for question in cb.QuestionDashSupport().get_all_the_questions():
 
-            data = db.QuestionDashboardData().pull_all_non_breadth_data(question, self.start_date)
-
+            data = db.QuestionDashboardData().pull_all_non_breadth_data(question, use_date)
+            overall_dictionary[question] = {'Active Profile': 0, 'Bailed 20': 0, 'Saw 20': 0, 'Saw MyPayScale': 0,
+                                            'Total Counts': 0}
+            date = None
+            first = True
             for row in data:
-                final = row[0], question, row[1], row[2], row[3], row[4], row[5], row[6]
-                if row[1] != "":
-                    writer.writerow(final)
+                if first is True:
+                    date = row[0]
+                    overall_dictionary[question]['Active Profile'] += row[2]
+                    overall_dictionary[question]['Bailed 20'] += row[3]
+                    overall_dictionary[question]['Saw 20'] += row[4]
+                    overall_dictionary[question]['Saw MyPayScale'] += row[5]
+                    overall_dictionary[question]['Total Counts'] += row[6]
+                    first = False
+                else:
+                    overall_dictionary[question]['Active Profile'] += row[2]
+                    overall_dictionary[question]['Bailed 20'] += row[3]
+                    overall_dictionary[question]['Saw 20'] += row[4]
+                    overall_dictionary[question]['Saw MyPayScale'] += row[5]
+                    overall_dictionary[question]['Total Counts'] += row[6]
+
+            current = overall_dictionary[question]
+            final = date, question, current['Active Profile'], current['Bailed 20'], current['Saw 20'], \
+                current['Saw MyPayScale'], current['Total Counts']
+            writer.writerow(final)
 
     def write_breadth_to_file(self, writer, breadth):
 

@@ -5,7 +5,8 @@ import csv
 
 class ElasticRequest:
 
-    def __init__(self, search_item, out_dir):
+    def __init__(self, search_item, industry, out_dir):
+        self.industry = industry
         self.file_name = 'input.tsv'
         self.out_dir = out_dir
         self.search_item = search_item
@@ -33,7 +34,8 @@ class ElasticRequest:
         root = self.call_elasticsearch()
         for child in root:
             title_match = child.find('{http://www.payscale.com/webservices/AnswerSearch}Text').text
-            profile_id = child.find('{http://www.payscale.com/webservices/AnswerSearch}ID').text
+            #profile_id = child.find('{http://www.payscale.com/webservices/AnswerSearch}ID').text
+            profile_id = 1
             frequency = child.find('{http://www.payscale.com/webservices/AnswerSearch}Frequency').text
             score = child.find('{http://www.payscale.com/webservices/AnswerSearch}Score').text
             xml_dict[title_match] = {'profile_id': profile_id, 'frequency': frequency, 'score': score}

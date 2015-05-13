@@ -19,15 +19,17 @@ class RankingService:
 
         if response.status_code == 200:
             print "Successful pull. Writing to file \n"
+            with open(self.out_dir + 'rankingResults.tsv', 'wb') as W:
+                writer = csv.writer(W, delimiter='\t')
+                for chunks in response.iter_content(1000):
+                    line = chunks.split('\n')
+
+                    for item in line:
+                        final = item.split('\t')
+                        writer.writerow(final)
+            return True
         else:
+
             print "Something went wrong with ranking service pull. You'll need to try again"
             print "Status code: " + str(response.status_code)
-
-        with open(self.out_dir + 'rankingResults.tsv', 'wb') as W:
-            writer = csv.writer(W, delimiter='\t')
-            for chunks in response.iter_content(1000):
-                line = chunks.split('\n')
-
-                for item in line:
-                    final = item.split('\t')
-                    writer.writerow(final)
+            return False

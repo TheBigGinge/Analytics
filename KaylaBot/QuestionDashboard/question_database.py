@@ -1,6 +1,6 @@
 import sqlite3
 import os
-
+import csv
 import FileHandling.file_work as fw
 import database_utilities as util
 
@@ -19,7 +19,7 @@ class CreateDataBase:
         self.__create_breadth_sixty_databases()
 
     def __wipe_database_clean(self):
-        for db in ['Question_Database.db', 'breadth_thirty.db', 'breadth_forty.db', 'breadth_fifty.db,'
+        for db in ['Question_Database.db', 'breadth_thirty.db', 'breadth_forty.db', 'breadth_fifty.db',
                                                                                     'breadth_sixty.db']:
             if os.path.exists(self.database_path + db):
                 print "Removing old databases..."
@@ -33,7 +33,7 @@ class CreateDataBase:
 
         c = conn.cursor()
         '''Creating tables to store data from the Log Files in'''
-        self.create_tables(c, util.get_all_the_questions())
+        self.create_tables(c, self.get_all_the_questions())
         conn.close()
 
     @staticmethod
@@ -52,7 +52,7 @@ class CreateDataBase:
         print("Creating tables in the thirty data base... \n")
 
         c = conn.cursor()
-        self.create_tables(c, util.get_all_the_questions())
+        self.create_tables(c, self.get_all_the_questions())
         conn.close()
 
     def __create_breadth_forty_databases(self):
@@ -62,7 +62,7 @@ class CreateDataBase:
         print("Creating tables in the forty data base... \n")
 
         c = conn.cursor()
-        self.create_tables(c, util.get_all_the_questions())
+        self.create_tables(c, self.get_all_the_questions())
         conn.close()
 
     def __create_breadth_fifty_databases(self):
@@ -72,7 +72,7 @@ class CreateDataBase:
         print("Creating tables in the fifty data base... \n")
 
         c = conn.cursor()
-        self.create_tables(c, util.get_all_the_questions())
+        self.create_tables(c, self.get_all_the_questions())
         conn.close()
 
     def __create_breadth_sixty_databases(self):
@@ -82,8 +82,19 @@ class CreateDataBase:
         print("Creating tables in the sixty data base... \n")
 
         c = conn.cursor()
-        self.create_tables(c, util.get_all_the_questions())
+        self.create_tables(c, self.get_all_the_questions())
         conn.close()
+
+    def get_all_the_questions(self):
+
+        all_questions = []
+
+        with open(self.main_file_path + 'All_Questions.csv', 'rb') as R:
+            reader = csv.reader(R, delimiter=',')
+
+            [all_questions.append(row[0]) for row in reader if row[0] != 'All Questions']
+
+        return all_questions
 
 
 class QuestionDashboardData:
@@ -94,24 +105,26 @@ class QuestionDashboardData:
     def __init__(self):
         self.fancy = 'fancy'
 
-    def insert_numerator_dictionary_to_database(self, target_dictionary, start_date, header):
-        conn = sqlite3.connect(self.database_path + "Question_Database.db")
-        c = conn.cursor()
-
-        data_date = self.change_string_date(str(start_date.date().toPyDate()))
-        print "Inserting data in to the numerator dictionary..."
-        for key_value in target_dictionary:
-
-            question = header.replace("/", "_").replace(" ", "_").replace("-", "_")
-            onet = key_value[key_value.find("/PayScale Code ") + len("/PayScale Code "):].strip()
-            target_count = target_dictionary[key_value]
-
-            c.execute('INSERT INTO ' + question + ' (date, onet_code, numerator_count) VALUES (?,?,?)',
-                      (data_date, onet, target_count))
-
-        conn.commit()
-        conn.close()
-        print "Completed."
+    # def insert_numerator_dictionary_to_database(self, target_dictionary, start_date, header):
+    #     conn = sqlite3.connect(self.database_path + "Question_Database.db")
+    #     c = conn.cursor()
+    #
+    #     data_date = self.change_string_date(str(start_date.date().toPyDate()))
+    #     print "Inserting data in to the numerator dictionary..."
+    #     for key_value in target_dictionary:
+    #
+    #         question = header.replace("/", "_").replace(" ", "_").replace("-", "_")
+    #         #Transformation below has already happened
+    #         #onet = key_value[key_value.find("/PayScale Code ") + len("/PayScale Code "):].strip()
+    #         onet = key_value
+    #         target_count = target_dictionary[key_value]
+    #
+    #         c.execute('INSERT INTO ' + question + ' (date, onet_code, numerator_count) VALUES (?,?,?)',
+    #                   (data_date, onet, target_count))
+    #
+    #     conn.commit()
+    #     conn.close()
+    #     print "Completed."
 
     def insert_data_from_dict_to_database(self, denom_dict, num_dict, start_date):
 
