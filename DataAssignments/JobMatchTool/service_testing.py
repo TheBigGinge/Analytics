@@ -1,9 +1,16 @@
-import RequestService.elasticsearch_requests as er
-import RequestService.ranking_service as rs
+import requests
+import time
+import urllib2
 
 
-er.ElasticRequest('accounting assistant', 'public administration',
-                  "\\\\filer01\\public\\Data_Analytics\\JobMatcher\\OutData\\").job_results_to_tsv_location()
-
-rs.RankingService("\\\\filer01\\public\\Data_Analytics\\JobMatcher\\OutData\\input.tsv",
-                  "\\\\filer01\\public\\Data_Analytics\\JobMatcher\\OutData\\").rank_request()
+with open('c:/users/ryanm/desktop/input.tsv', 'rb') as ifh:
+    start_time = time.time()
+    k = ifh.read()
+    #print k
+    req = urllib2.Request('http://10.17.0.130:8080', k)
+    req.add_header('Content-Length', '%d' % len(k))
+    req.add_header('Content-Type', 'application/octet-stream')
+    res = urllib2.urlopen(req)
+    print '=========='
+    print res.read()
+    print time.time() - start_time

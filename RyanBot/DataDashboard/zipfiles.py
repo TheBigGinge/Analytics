@@ -10,7 +10,7 @@ all_logs = os.listdir(report_path)
 
 WorkingDir = os.getcwd()
 
-log_files = "2015.02.csv"
+log_files = "2015.06.csv"
 '''
 for log_files in all_logs:
     new_name = log_files.replace(".csv", ".zip")
@@ -27,6 +27,6 @@ print new_name
 
 
 with zipfile.ZipFile(report_path_alt + new_name, 'w', zipfile.ZIP_DEFLATED) as create_zip:
-    create_zip.write(local_path + log_files, arcname=log_files)
+    create_zip.write(report_path + log_files, arcname=log_files)
 
 print "Complete"
