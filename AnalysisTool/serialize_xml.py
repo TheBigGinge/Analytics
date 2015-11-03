@@ -302,6 +302,18 @@ class BuildOverallTableXML:
             string = ET.SubElement(dimension_list, 'string')
             string.text = "AS[.]AV{Location\Country\Canada}"
 
+        # ATH 11/2/2015
+        elif isinstance(file_to_use, list) and file_to_use[0] == r'Profile ID List':
+            answer_string = "AS[profiles]"
+            for i, profile_id in enumerate(file_to_use[1:], start=1):
+                answer_string += "AV{Profile\\ID\\" + profile_id + "}"
+                if i < len(file_to_use[1:]):
+                    answer_string += " + "
+            string = ET.SubElement(dimension_list, 'string')
+            string.text = answer_string
+
+
+
     @staticmethod
     def create_job_jobs_from_list(dimension_list, file_to_use):
         for job in file_to_use:
