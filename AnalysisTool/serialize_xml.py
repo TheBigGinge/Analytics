@@ -303,6 +303,7 @@ class BuildOverallTableXML:
             string.text = "AS[.]AV{Location\Country\Canada}"
 
         # ATH 11/2/2015
+
         elif isinstance(file_to_use, list) and file_to_use[0] == r'Profile ID List':
             answer_string = "AS[profiles]"
             for i, profile_id in enumerate(file_to_use[1:], start=1):
