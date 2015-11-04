@@ -311,6 +311,7 @@ class BuildOverallTableXML:
                     answer_string += " + "
             string = ET.SubElement(dimension_list, 'string')
             string.text = answer_string
+            print answer_string
 
 
 
