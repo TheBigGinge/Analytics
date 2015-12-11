@@ -2,15 +2,16 @@ import os
 import datetime
 import getpass
 import csv
-
+from Constants import constant_strings as c
 from PyQt4 import QtCore, QtGui
 
 from AnalyticsTools.ConversionMetricsGUI import file_cycle
 import database
 import Statistics.chi_square as stats
 
+constant = c.Constants()
 
-local_path = os.path.expanduser("~" + getpass.getuser()) + "\\desktop\\"
+local_path = constant.local_path
 
 try:
     _fromUtf8 = QtCore.QString.fromUtf8
@@ -27,10 +28,10 @@ except AttributeError:
     def _translate(context, text, disambig):
         return QtGui.QApplication.translate(context, text, disambig)
 
-data_path = '\\\\pssea\\files\\public\\Data Analytics\\Consumer Log Metrics\\Data Files\\'
-log_path_write = '\\\\pssea\\files\\public\\Data Analytics\\Consumer_Level_Conversion\\'
-log_path = '\\\\psfiler01\\data\\SurveyReports\\'
-alert_path = '\\\\filer01\\public\\Data_Analytics\\Consumer_Level_Conversion\\Alert_Files\\'
+data_path = constant.consumer_log_data
+log_path_write = constant.consumer_level_conversion
+log_path = constant.log_path
+alert_path = constant.consumer_alert_files
 
 
 class UIForm(object):

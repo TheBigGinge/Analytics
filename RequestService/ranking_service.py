@@ -68,3 +68,6 @@ class PythonRankingService:
             print "Something went wrong with ranking service pull. You'll need to try again"
             print "Status code: " + str(response.status_code)
             return False
+
+PythonRankingService("\\\\filer01\\public\\Data_Analytics\\JobMatcher\\OutData\\input.tsv",
+                     "C:\\users\\ryanm\\desktop\\").rank_request()

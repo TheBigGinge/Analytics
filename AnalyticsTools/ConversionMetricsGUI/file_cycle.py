@@ -1,15 +1,15 @@
 import csv
 import sqlite3
 import time
-
+from Constants import constant_strings as c
 from PyQt4 import QtCore
 
 from AnalyticsTools.ConversionMetricsGUI import levels
 from database import DataBaseQueries as dbq
 
-
-log_path = '\\\\psfiler01\\data\\SurveyReports\\'
-log_path_write = '\\\\filer01\\public\\Data_Analytics\\Consumer_Level_Conversion\\'
+constant = c.Constants()
+log_path = constant.log_path
+log_path_write = constant.consumer_level_conversion
 
 
 class ReadLogFiles(QtCore.QThread):

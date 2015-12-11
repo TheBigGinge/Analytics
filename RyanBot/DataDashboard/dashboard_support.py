@@ -363,9 +363,12 @@ class DashboardSupport:
             for line in breadth_thirty:
                 writer.writerow(line)
 
-    def unzip_file(self, zip_file):
+    def unzip_file(self, zip_file, out_file = None):
 
-        files.FileHandler().zip_file_open(zip_file, self.out_files)
+        if out_file == None:
+            files.FileHandler().zip_file_open(zip_file, self.out_files)
+        else:
+            files.FileHandler().zip_file_open(zip_file, out_file)
 
     def pull_tasks_from_file(self):
 

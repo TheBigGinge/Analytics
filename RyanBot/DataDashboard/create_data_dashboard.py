@@ -12,8 +12,8 @@ out_files = os.listdir(out_directory)
 #Pulling all admin tool data
 print "Setting up the data dashboard..."
 dashboard = data_dashboard.DataDashboard()
-#dashboard.pull_current_admin_tool_values()
-#dashboard.write_breadth_thirty_to_file()
+dashboard.pull_current_admin_tool_values()
+dashboard.write_breadth_thirty_to_file()
 
 #Running all analysis tool queries
 print "Running analysis tool queries..."
@@ -352,7 +352,7 @@ todays_date_alt = now[:7]
 psp_file_path = "\\\\filer01\\public\\Data Dashboards\\PSP Zip Reports\\"
 working_directory = os.getcwd()
 
-
+'''
 class PSPReportCompile:
 
     def __init__(self):
@@ -407,7 +407,7 @@ class PSPReportCompile:
 
             os.remove(report_file)
 #PSPReportCompile()
-
+'''
 
 class CreateUNCTab:
 

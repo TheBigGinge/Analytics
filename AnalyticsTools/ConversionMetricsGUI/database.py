@@ -1,9 +1,11 @@
 import sqlite3
 import os
+from Constants import constant_strings as c
+constant = c.Constants()
 
-data_path = '\\\\filer01\\public\\Data_Analytics\\Consumer Log Metrics\\Data Files\\'
-log_path_write = '\\\\filer01\\public\\Data_Analytics\\Consumer_Level_Conversion\\'
-log_path = '\\\\psfiler01\\data\\SurveyReports\\'
+data_path = constant.consumer_log_data
+log_path_write = constant.consumer_level_conversion
+log_path = constant.log_path
 
 
 class CreateDataBase:

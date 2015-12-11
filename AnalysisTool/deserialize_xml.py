@@ -70,6 +70,7 @@ class OverallDataCount(xml.sax.ContentHandler):
         self.row_name = ''
         self.buffer = ''
         self.counts = None
+        self.title = None
 
     def elem_str(self):
         return '/'.join(self.elements)
@@ -82,6 +83,7 @@ class OverallDataCount(xml.sax.ContentHandler):
         if elem_str == 'Reports/TableReport/Caption':
             self.position = 1
             self.buffer = ""
+            self.title = name
 
         if elem_str == 'Reports/TableReport/Count':
             self.counts

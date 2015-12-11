@@ -3,8 +3,9 @@ import csv
 import os
 import DateFunctions.datetimes_in as df
 import xml.dom.minidom as minidom
+from Constants import constant_strings as c
 
-automated_dashboard_path = '\\\\filer01\\public\\Data Dashboards\\Automated Dashboard Files\\'
+automated_dashboard_path = c.Constants().automated_dashboard_files
 
 
 class BuildOverallTableXML:

@@ -1,6 +1,7 @@
 import os
 import sys
-sys.path.append("C:\\hg\\payscale\\users\\ryanm\\PayScaleAnalytics\\")
+import Constants.constant_strings as c
+sys.path.append(c.Constants().payscale_analytics)
 import AnalysisTool.deserialize_xml as my_xml
 import dashboard_support as ds
 
@@ -99,11 +100,16 @@ class DataDashboard:
 
         query.run_model_data_queries()
 
-    def extract_job_counts_from_xml(self, files):
+    def extract_job_counts_from_xml(self, files, out_file = None):
 
-        my_xml.fix_xml_encoding(self.out_file, files)
+        if out_file == None:
+            my_xml.fix_xml_encoding(self.out_file, files)
 
-        return ds.DashboardSupport().pull_job_data_from_xml(self.out_file + files)
+            return ds.DashboardSupport().pull_job_data_from_xml(self.out_file + files)
+        else:
+            my_xml.fix_xml_encoding(out_file, files)
+
+            return ds.DashboardSupport().pull_job_data_from_xml(out_file + files)
 
     def extract_current_iqr_data(self, files):
 

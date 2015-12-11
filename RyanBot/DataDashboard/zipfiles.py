@@ -10,7 +10,7 @@ all_logs = os.listdir(report_path)
 
 WorkingDir = os.getcwd()
 
-log_files = "2015.06.csv"
+log_files = "2015.09.csv"
 '''
 for log_files in all_logs:
     new_name = log_files.replace(".csv", ".zip")

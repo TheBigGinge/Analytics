@@ -13,10 +13,10 @@ class ElasticRequest:
         self.host = 'psbuilder05b.dc.pssea.office'
         self.method = 'GET'
         self.port = ':86'
-        self.uri = '/answersearch/answersearch.asmx/SearchForCompletionsWithRollup'
+        self.uri = '/answersearch/answersearch.asmx/SearchAllWithRollup'
         self.job_title_query = '?answerValue=' + self.search_item + '&rollupSet=PSPJobRollup&' \
                                                                     'fieldName=Job&minFrequency=1' \
-                                                                    '&maxMatches=10&useProbabilityCache=false'
+                                                                    '&maxMatches=100&useProbabilityCache=false'
 
     def call_elasticsearch(self):
         response = requests.get('http://' + self.host + self.port + self.uri + self.job_title_query)
@@ -39,6 +39,7 @@ class ElasticRequest:
             frequency = child.find('{http://www.payscale.com/webservices/AnswerSearch}Frequency').text
             score = child.find('{http://www.payscale.com/webservices/AnswerSearch}Score').text
             xml_dict[title_match] = {'profile_id': profile_id, 'frequency': frequency, 'score': score}
+
 
         return xml_dict
 
