@@ -77,7 +77,7 @@ anon.post_analysis_tool_query_pre_made_file_dims('psbuilder02a',
 
 #Open up all the zipped presents!!!
 for zip_files in os.listdir(const.anon_out):
-    if ".zip" in zip_files:
+    if ".zip" in zip_files and 'Rachel' in zip_files:
         dash.unzip_file(zip_files, const.anon_out)
 
 #Put that fanciness in a DTO!!!
@@ -85,7 +85,7 @@ for xml_files in os.listdir(const.anon_out):
     if ".xml" in xml_files:
         my_xml.fix_xml_encoding(const.anon_out, xml_files)
 
-        if 'All Profiles' in xml_files:
+        if 'All Profiles' in xml_files and 'Rachel Data Dashboard' in xml_files:
             if '_0' in xml_files:
                 all_profiles.job_offer = dash.pull_job_data_from_xml(const.anon_out + xml_files)
             elif '_1' in xml_files:
@@ -94,7 +94,7 @@ for xml_files in os.listdir(const.anon_out):
                 all_profiles.alumni = dash.pull_job_data_from_xml(const.anon_out + xml_files)
             elif '_3' in xml_files:
                 all_profiles.informational = dash.pull_job_data_from_xml(const.anon_out + xml_files)
-        else:
+        elif 'Rachel Data Dashboard' in xml_files and 'Active Profiles' in xml_files:
             if '_0' in xml_files:
                 active_profiles.job_offer = dash.pull_job_data_from_xml(const.anon_out + xml_files)
             elif '_1' in xml_files:
@@ -115,50 +115,53 @@ def divide_it(num, den):
         return float(num) / float(den)
     except (ZeroDivisionError):
         return 0
+try:
+    #Damn, son! So, much to put in the damn file!!!
+    push_it(last_month_start)#date
+    #Denominators
+    push_it(all_profiles.job_offer[all_key])#Total Job Offer Count All
+    push_it(all_profiles.job_offer[us_ca])#Total Job Offer Count US & CA
+    push_it(all_profiles.job_offer[all_key] - all_profiles.job_offer[us_ca])#Total Job Offer Count Non-US & CA
+    push_it(all_profiles.current_job[all_key])#Total Current Job Count All
+    push_it(all_profiles.current_job[us_ca])#Total Current Job Count US & CA
+    push_it(all_profiles.current_job[all_key] - all_profiles.current_job[us_ca])#Total Current Job Count Non-US & CA
+    push_it(all_profiles.informational[all_key])#Total Informational Count All
+    push_it(all_profiles.informational[us_ca])#Total Informational Count US & CA
+    push_it(all_profiles.informational[all_key] - all_profiles.informational[us_ca])#Total Informational Count Non-US & CA
+    push_it(all_profiles.alumni[all_key])#Total Alumni Count All
+    push_it(all_profiles.alumni[us_ca])#Total Alumni Count US & CA
+    push_it(all_profiles.alumni[all_key] - all_profiles.alumni[us_ca])#Total Alumni Count Non-US & CA
 
-#Damn, son! So, much to put in the damn file!!!
-push_it(last_month_start)#date
-#Denominators
-push_it(all_profiles.job_offer[all_key])#Total Job Offer Count All
-push_it(all_profiles.job_offer[us_ca])#Total Job Offer Count US & CA
-push_it(all_profiles.job_offer[all_key] - all_profiles.job_offer[us_ca])#Total Job Offer Count Non-US & CA
-push_it(all_profiles.current_job[all_key])#Total Current Job Count All
-push_it(all_profiles.current_job[us_ca])#Total Current Job Count US & CA
-push_it(all_profiles.current_job[all_key] - all_profiles.current_job[us_ca])#Total Current Job Count Non-US & CA
-push_it(all_profiles.informational[all_key])#Total Informational Count All
-push_it(all_profiles.informational[us_ca])#Total Informational Count US & CA
-push_it(all_profiles.informational[all_key] - all_profiles.informational[us_ca])#Total Informational Count Non-US & CA
-push_it(all_profiles.alumni[all_key])#Total Alumni Count All
-push_it(all_profiles.alumni[us_ca])#Total Alumni Count US & CA
-push_it(all_profiles.alumni[all_key] - all_profiles.alumni[us_ca])#Total Alumni Count Non-US & CA
+    #Numerators
+    push_it(active_profiles.job_offer[all_key])#Active Job Offer Count All
+    push_it(active_profiles.job_offer[us_ca])#Active Job Offer Count US & CA
+    push_it(active_profiles.job_offer[all_key] - active_profiles.job_offer[us_ca])#Active Job Offer Count Non-US & CA
+    push_it(active_profiles.current_job[all_key])#Active Current Job Count All
+    push_it(active_profiles.current_job[us_ca])#Active Current Job Count US & CA
+    push_it(active_profiles.current_job[all_key] - active_profiles.current_job[us_ca])#Active Current Job Count Non-US & CA
+    push_it(active_profiles.alumni[all_key])#Active Alumni Count All
+    push_it(active_profiles.alumni[us_ca])#Active Alumni Count US & CA
+    push_it(active_profiles.alumni[all_key] - active_profiles.alumni[us_ca])#Active Alumni Count Non-US & CA
 
-#Numerators
-push_it(active_profiles.job_offer[all_key])#Active Job Offer Count All
-push_it(active_profiles.job_offer[us_ca])#Active Job Offer Count US & CA
-push_it(active_profiles.job_offer[all_key] - active_profiles.job_offer[us_ca])#Active Job Offer Count Non-US & CA
-push_it(active_profiles.current_job[all_key])#Active Current Job Count All
-push_it(active_profiles.current_job[us_ca])#Active Current Job Count US & CA
-push_it(active_profiles.current_job[all_key] - active_profiles.current_job[us_ca])#Active Current Job Count Non-US & CA
-push_it(active_profiles.alumni[all_key])#Active Alumni Count All
-push_it(active_profiles.alumni[us_ca])#Active Alumni Count US & CA
-push_it(active_profiles.alumni[all_key] - active_profiles.alumni[us_ca])#Active Alumni Count Non-US & CA
-
-#Metrics
-push_it(divide_it(active_profiles.job_offer[all_key], all_profiles.job_offer[all_key]))#Job Offer Activation Rate All
-push_it(divide_it(active_profiles.job_offer[us_ca], all_profiles.job_offer[us_ca]))#Job Offer Activation Rate US & CA
-job_non_num = active_profiles.job_offer[all_key] - active_profiles.job_offer[us_ca]#Job Offer Activation Rate Non-US & CA
-job_non_den = all_profiles.job_offer[all_key] - all_profiles.job_offer[us_ca]#Job Offer Activation Rate Non-US & CA
-push_it(divide_it(job_non_num, job_non_den))#Job Offer Activation Rate Non-US & CA
-push_it(divide_it(active_profiles.current_job[all_key], all_profiles.current_job[all_key]))#Current Job Activation Rate All
-push_it(divide_it(active_profiles.current_job[us_ca], all_profiles.current_job[us_ca]))#Current Job Activation Rate US & CA
-cur_non_num =  active_profiles.current_job[all_key] - active_profiles.current_job[us_ca]#Current Job Activation Rate Non-US & CA
-cur_non_den = all_profiles.current_job[all_key] - all_profiles.current_job[us_ca]#Current Job Activation Rate Non-US & CA
-push_it(divide_it(cur_non_num, cur_non_den))#Current Job Activation Rate Non-US & CA
-push_it(divide_it(active_profiles.alumni[all_key], all_profiles.alumni[all_key]))#Alumni Activation Rate All
-push_it(divide_it(active_profiles.alumni[us_ca], all_profiles.alumni[us_ca]))#Alumni Activation Rate US & CA
-alum_non_num =  active_profiles.alumni[all_key] - active_profiles.alumni[us_ca]#Alumni Activation Rate Non-US & CA
-alum_non_den = all_profiles.alumni[all_key] - all_profiles.alumni[us_ca]#Alumni Activation Rate Non-US & CA
-push_it(divide_it(alum_non_num, alum_non_den))#Alumni Activation Rate Non-US & CA
+    #Metrics
+    push_it(divide_it(active_profiles.job_offer[all_key], all_profiles.job_offer[all_key]))#Job Offer Activation Rate All
+    push_it(divide_it(active_profiles.job_offer[us_ca], all_profiles.job_offer[us_ca]))#Job Offer Activation Rate US & CA
+    job_non_num = active_profiles.job_offer[all_key] - active_profiles.job_offer[us_ca]#Job Offer Activation Rate Non-US & CA
+    job_non_den = all_profiles.job_offer[all_key] - all_profiles.job_offer[us_ca]#Job Offer Activation Rate Non-US & CA
+    push_it(divide_it(job_non_num, job_non_den))#Job Offer Activation Rate Non-US & CA
+    push_it(divide_it(active_profiles.current_job[all_key], all_profiles.current_job[all_key]))#Current Job Activation Rate All
+    push_it(divide_it(active_profiles.current_job[us_ca], all_profiles.current_job[us_ca]))#Current Job Activation Rate US & CA
+    cur_non_num =  active_profiles.current_job[all_key] - active_profiles.current_job[us_ca]#Current Job Activation Rate Non-US & CA
+    cur_non_den = all_profiles.current_job[all_key] - all_profiles.current_job[us_ca]#Current Job Activation Rate Non-US & CA
+    push_it(divide_it(cur_non_num, cur_non_den))#Current Job Activation Rate Non-US & CA
+    push_it(divide_it(active_profiles.alumni[all_key], all_profiles.alumni[all_key]))#Alumni Activation Rate All
+    push_it(divide_it(active_profiles.alumni[us_ca], all_profiles.alumni[us_ca]))#Alumni Activation Rate US & CA
+    alum_non_num =  active_profiles.alumni[all_key] - active_profiles.alumni[us_ca]#Alumni Activation Rate Non-US & CA
+    alum_non_den = all_profiles.alumni[all_key] - all_profiles.alumni[us_ca]#Alumni Activation Rate Non-US & CA
+    push_it(divide_it(alum_non_num, alum_non_den))#Alumni Activation Rate Non-US & CA
+except:
+    print 'Something went wrong. Most likely the counts for psbuilder02a haven\'t been updated yet.'
+    raise SystemExit
 
 #append 1 new row
 with open(const.profile_counts + file_write_name, 'ab') as R:
@@ -168,5 +171,5 @@ with open(const.profile_counts + file_write_name, 'ab') as R:
 
 #clean up our dirty laundry
 for old_files in os.listdir(const.anon_out):
-    if '.zip' in old_files or '.xml' in old_files:
+    if ('.zip' in old_files or '.xml' in old_files) and 'Rachel Data Dashboard' in old_files:
         os.remove(const.anon_out + old_files)

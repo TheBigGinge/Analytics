@@ -8,6 +8,8 @@ from KaylaBot.QuestionDashboard import question_database as db
 import gui_code_behind as support
 import data_extract_thread as analysis
 import gui_code_behind as cb
+import Constants.constant_strings as cs
+const = cs.Constants()
 
 
 try:
@@ -41,7 +43,7 @@ class UiMainWindow(object):
         self.pull_csv_thread = None
         self.check_boxes = None
         self.csv_thread = None
-        self.local_path = os.path.expanduser("~" + getpass.getuser()) + "\\desktop\\"
+        self.local_path =   const.local_desktop
         self.support = support.QuestionDashSupport()
 
     def setup_ui(self, main_window):

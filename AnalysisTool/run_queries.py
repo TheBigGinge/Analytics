@@ -4,7 +4,7 @@ import serialize_xml as build_xml
 
 class AnonReports:
 
-    def __init__(self, temp_in_files, temp_out_files):
+    def __init__(self, temp_in_files, temp_out_files, ui_update=None):
         """
         :param temp_in_files:
             File path for the Analysis Config Files to be stored
@@ -13,6 +13,7 @@ class AnonReports:
         """
         self.temp_in_files = temp_in_files
         self.temp_out_files = temp_out_files
+        self.ui_update = ui_update
 
     def post_analysis_tool_query_pre_made_file_dims(self, index_server,
                                                     in_file,
@@ -31,6 +32,7 @@ class AnonReports:
                                                     fitting="Data",
                                                     part_time="True",
                                                     pfgid="False",
+                                                    custom_dimension_tuple=None
                                                     ):
         """
         :param index_server:
@@ -85,11 +87,13 @@ class AnonReports:
                                            ranges=ranges,
                                            confirmed=confirmed,
                                            row_count=row_count,
-                                           min_per_row=min_per_row
+                                           min_per_row=min_per_row,
+                                           custom_dimension_tuple=custom_dimension_tuple
                                            ).build_overall_table_counts_file()
 
         request_data.PostToAnalysisTool(self.temp_in_files + in_file + ".ac.txt",
-                                        self.temp_out_files + in_file + ".zip").run()
+                                        self.temp_out_files + in_file + ".zip",
+                                        self.ui_update).run()
 
     def post_analysis_tool_query_dim_list_create(self,
                                                  index_server,
@@ -192,6 +196,12 @@ class AnonReports:
                                               main_filter,
                                               first_dimension_list=None,
                                               second_dimension_list=None,
+                                              first_dimension_file=None,
+                                              second_dimension_file=None,
+                                              custom_dimension_tuple=None,
+                                              report_definition=None,
+                                              sub_filter='UnconfirmedOnly',
+                                              min_per_row='0'
                                               ):
 
         build_xml.BuildCountTableXML(index_server,
@@ -201,8 +211,15 @@ class AnonReports:
                                      self.temp_in_files + in_file + ".ac.txt",
                                      main_filter=main_filter,
                                      first_dimension_list=first_dimension_list,
-                                     second_dimension_list=second_dimension_list).build_count_table_counts_file()
+                                     second_dimension_list=second_dimension_list,
+                                     first_dimension_file=first_dimension_file,
+                                     second_dimension_file=second_dimension_file,
+                                     custom_dimension_tuple=custom_dimension_tuple,
+                                     report_definition=report_definition,
+                                     sub_filter=sub_filter,
+                                     min_per_row=min_per_row).build_count_table_counts_file()
 
         request_data.PostToAnalysisTool(self.temp_in_files + in_file + ".ac.txt",
-                                        self.temp_out_files + in_file + ".zip").run()
+                                        self.temp_out_files + in_file + ".zip",
+                                        self.ui_update).run()
 
