@@ -594,7 +594,12 @@ class BuildCountTableXML:
                  second_dimension_file=None,
                  part_time='true',
                  pfgid='false',
-                 custom_dimension_tuple=None):
+                 custom_dimension_tuple=None,
+                 profile_count=None,
+                 sampling_method=None,
+                 group_by_first_dim=None,
+                 row_names=None,
+                 add_dim_definition=None):
 
         self.min_date = min_date + "T00:00:00"
         self.max_date = max_date + "T00:00:00"
@@ -615,6 +620,11 @@ class BuildCountTableXML:
         self.part_time = part_time
         self.pfgid = pfgid
         self.custom_dimension_tuple = custom_dimension_tuple
+        self.profile_count = profile_count
+        self.sampling_method = sampling_method
+        self.group_by_first_dim = group_by_first_dim
+        self.row_names = row_names
+        self.add_dim_definition = add_dim_definition
 
     def build_count_table_counts_file(self):
 
@@ -655,8 +665,25 @@ class BuildCountTableXML:
         min_per_row = ET.SubElement(dimension, 'MinPerRow')
         min_per_row.text = self.min_per_row
 
-        include_profile_answer = ET.SubElement(report_def, 'IncludeProfileAnswer')
-        include_profile_answer.text = "false"
+        if self.report_definition != 'SampleDefinition':
+            include_profile_answer = ET.SubElement(report_def, 'IncludeProfileAnswer')
+            include_profile_answer.text = "false"
+
+        else:
+            profile_count = ET.SubElement(report_def, 'ProfileCount')
+            profile_count.text = self.profile_count
+
+            sampling_method = ET.SubElement(report_def, 'SamplingMethod')
+            sampling_method.text = self.sampling_method
+
+            group_by_first_dim = ET.SubElement(report_def, 'GroupByFirstDim')
+            group_by_first_dim.text = self.group_by_first_dim
+
+            row_names = ET.SubElement(report_def, 'RowNames')
+            row_names.text = self.row_names
+
+            add_dim_def = ET.SubElement(report_def, 'AddDimDefinition')
+            add_dim_def.text = self.add_dim_definition
 
         if self.first_dimension_file is None:
             dim_1_list = ET.SubElement(root, 'Dim1List')

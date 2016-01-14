@@ -8,6 +8,7 @@ class Constants:
         self.aequitas = self.data_analytics + 'Aequitas\\'
         self.anon_reports = self.data_analytics + 'AnonReports\\'
         self.anon_in = self.anon_reports + 'TempIn\\'
+        self.alumni_analytics = self.data_analytics + '\\Alumni_Analytics\\'
         self.alumni_analytics_in = self.anon_in + '\\GinaDimensions\\'
         self.anon_out = self.anon_reports + 'TempOut\\'
         self.consumer_level_conversion = self.data_analytics + 'Consumer_Level_Conversion\\'

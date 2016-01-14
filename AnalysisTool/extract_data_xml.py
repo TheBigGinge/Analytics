@@ -49,6 +49,20 @@ class ExtractXMLData:
 
             return handler.count_dictionary
 
+    def table_def_medians_list_handler(self):
+        with xml_parse.report_handler(extract.TableDefinitionMediansListReturn) as handler:
+            with open(self.infile, 'rb') as ifh:
+                xml.sax.parse(ifh, handler)
+
+            return handler.median_dictionary
+
+    def sample_def_alumni_analytics_handler(self):
+        with xml_parse.report_handler(extract.SampleDefinitionAlumniAnalytics) as handler:
+            with open(self.infile, 'rb') as ifh:
+                xml.sax.parse(ifh, handler)
+
+            return handler.item_dictionary
+
     def fix_xml_encoding(self, file_path):
         """
         Currently the Analysis Tool is spitting out xml files with utf-16 encoding when it should

@@ -201,8 +201,13 @@ class AnonReports:
                                               custom_dimension_tuple=None,
                                               report_definition=None,
                                               sub_filter='UnconfirmedOnly',
-                                              min_per_row='0'
-                                              ):
+                                              min_per_row='0',
+                                              profile_count=None,
+                                              sampling_method=None,
+                                              group_by_first_dim=None,
+                                              row_names=None,
+                                              add_dim_definition=None):
+
 
         build_xml.BuildCountTableXML(index_server,
                                      in_file,
@@ -217,7 +222,13 @@ class AnonReports:
                                      custom_dimension_tuple=custom_dimension_tuple,
                                      report_definition=report_definition,
                                      sub_filter=sub_filter,
-                                     min_per_row=min_per_row).build_count_table_counts_file()
+                                     min_per_row=min_per_row,
+                                     profile_count=profile_count,
+                                     sampling_method=sampling_method,
+                                     group_by_first_dim=group_by_first_dim,
+                                     row_names=row_names,
+                                     add_dim_definition=add_dim_definition
+                                     ).build_count_table_counts_file()
 
         request_data.PostToAnalysisTool(self.temp_in_files + in_file + ".ac.txt",
                                         self.temp_out_files + in_file + ".zip",
