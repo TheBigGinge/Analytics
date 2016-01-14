@@ -87,6 +87,7 @@ class AlumniDataCollect(QtCore.QThread):
     def run(self):
         if self.test_parameters() and self.test_dates():
             self.fire_queries()
+            self.unzip_results()
             self.gather_results()
             self.file_writing()
             self.clean_up_results()
