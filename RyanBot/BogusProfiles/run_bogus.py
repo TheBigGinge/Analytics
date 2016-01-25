@@ -1,3 +1,4 @@
+# coding: utf-8
 import os
 import csv
 import datetime
@@ -61,6 +62,11 @@ class PullDashboardInformation:
             pass
         if self.dashboard_check(new_dashboard) is False:
             self.confirmed_dict = self.pull_rollups(new_dashboard)
+            counter = 0
+            for i in self.confirmed_dict:
+                counter += 1
+                print self.confirmed_dict[i], i
+                if counter <10: break
             self.write_rollups_to_file()
 
     @staticmethod
@@ -105,10 +111,11 @@ class PullDashboardInformation:
         work_book = xlrd.open_workbook(filename=Dashboard_Path + new_dashboard)
         
         for sheet in work_book.sheets():
+            print "sheet"
             if sheet.name != 'CFM':
                 continue
-            rule_value = map(str.strip, map(str, sheet.col_values(0)))
-            answer_value = map(str.strip, map(str, sheet.col_values(6)))
+            rule_value = map(unicode.strip, map(unicode, sheet.col_values(0)))
+            answer_value = map(unicode.strip, map(unicode, sheet.col_values(6)))
             dashboard_name = new_dashboard[0:7]
             print "Pulling in the Confirmed Jobs from " + dashboard_name + " \n"
             
@@ -126,7 +133,7 @@ class PullDashboardInformation:
             header = ['Title', 'Rollup']
             writer.writerow(header)
             for row in self.confirmed_dict:
-                final = row, self.confirmed_dict[row]
+                final = row.encode("ascii", "ignore"), self.confirmed_dict[row].encode("ascii", "ignore")
                 writer.writerow(final)
 
 PullDashboardInformation()
@@ -259,7 +266,7 @@ class PullInformationFromLogs:
             writer = csv.writer(f, lineterminator='\n')
             
             for spot in total_list:
-                writer.writerow(spot) 
+                writer.writerow(spot)
 
     def row_index(self, iterable, files, row_iter, names):
 

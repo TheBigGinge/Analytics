@@ -6,7 +6,7 @@ import DateFunctions.date_functions as df
 class SplunkRequests:
 
     def __init__(self, min_date, max_date):
-        self.host = 'splunk01'
+        self.host = 'digger'
         self.user = 'jessew'
         self.password = 'Payscale'
         self.port = 8089
@@ -38,3 +38,5 @@ class SplunkRequests:
 
     def set_search_string(self, new_string):
         self.search_string = new_string
+
+SplunkRequests("2015-08-01", "2015-09-01").pull_psp_job_match_splunk_logs()

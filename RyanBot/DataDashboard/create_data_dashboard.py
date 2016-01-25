@@ -12,8 +12,8 @@ out_files = os.listdir(out_directory)
 #Pulling all admin tool data
 print "Setting up the data dashboard..."
 dashboard = data_dashboard.DataDashboard()
-#dashboard.pull_current_admin_tool_values()
-#dashboard.write_breadth_thirty_to_file()
+dashboard.pull_current_admin_tool_values()
+dashboard.write_breadth_thirty_to_file()
 
 #Running all analysis tool queries
 print "Running analysis tool queries..."

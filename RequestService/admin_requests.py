@@ -196,7 +196,7 @@ class PostToAnalysisTool:
                 r = requests.post(self.url, data=reader)
 
                 if r.status_code == 200:
-                    print "Successful pull. Writing to file \n"
+                    print "Successful pull. Writing to file"
                 else:
                     print "Something went wrong with the Analysis Tool Post request. You'll need to try again. \n"
                     print "Status code: " + str(r.status_code)
