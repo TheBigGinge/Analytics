@@ -3,8 +3,32 @@ import csv
 import os
 import DateFunctions.datetimes_in as df
 import xml.dom.minidom as minidom
+from Constants import constant_strings as c
 
-automated_dashboard_path = '\\\\filer01\\public\\Data Dashboards\\Automated Dashboard Files\\'
+automated_dashboard_path = c.Constants().automated_dashboard_files
+
+#helper function to create custom dimensions
+def build_custom_dimension(ET, dimension_name, custom_dimension_tuple):
+    sub_def = ET.SubElement(dimension_name, 'Def')
+    field = ET.SubElement(sub_def, 'Field')
+    field.set('xsi:type', 'StringAnswerCell')
+    field.set('IsConfirmed', 'false')
+    field.set('ValueId', '0')
+    field.set('AnswerSetID', '0')
+
+
+    props = ET.SubElement(field, 'Properties')
+    name_value_one = ET.SubElement(props, 'NameValuePair')
+    name_value_one.set('Name', 'fieldgroup')
+    name_value_one.set('Value', custom_dimension_tuple[0])
+
+    name_value_two = ET.SubElement(props, 'NameValuePair')
+    name_value_two.set('Name', 'Field')
+    name_value_two.set('Value', custom_dimension_tuple[1])
+
+    multi_value = ET.SubElement(sub_def, 'MultiValue')
+    '''May want to change this to be set as well eventually'''
+    multi_value.text = 'false'
 
 
 class BuildOverallTableXML:
@@ -43,7 +67,8 @@ class BuildOverallTableXML:
                  confirmed="ConfirmedOnly",
                  row_count="0",
                  min_per_row="0",
-                 string_builder_type=None):
+                 string_builder_type=None,
+                 custom_dimension_tuple=None):
         """
         :param index_server:
             index server you'd like the machine to point at (localhost, psstats03, etc)
@@ -82,6 +107,10 @@ class BuildOverallTableXML:
         :param dimension:
             This is the count table definition you would use for a Table Dimension query.
             Example: report_definition = TableDimension, report_measure = Profile Age Measure, dimension = Job Rollup
+        :param custom_dimension_tuple:
+            This is for type stringAnswerCell types of dimensions. This is a tuple with the 0th element being the
+            fieldgroup and the 1st element being the field
+            This is for custom dimensions
         :return:
             Text file of the analysis config xml
         """
@@ -107,6 +136,8 @@ class BuildOverallTableXML:
         self.row_count = row_count
         self.min_per_row = min_per_row
         self.string_builder_type = string_builder_type
+        self.custom_dimension_tuple = custom_dimension_tuple
+
 
     def build_overall_table_counts_file(self):
 
@@ -144,7 +175,10 @@ class BuildOverallTableXML:
         else:
             self.build_table_dimension(report_def)
             summarize = ET.SubElement(report_def, 'Summarize')
-            summarize.text = "false"
+            if self.custom_dimension_tuple is None:
+                summarize.text = "true"
+            else:
+                summarize.text = "false"
 
         if self.first_dimension_file is None:
             dim_1_list = ET.SubElement(root, 'Dim1List')
@@ -191,13 +225,17 @@ class BuildOverallTableXML:
         exp_date.text = str(df.DateTimeFormats().return_today_as_y_m_d("-")) + "T00:00:00"
 
         max_results = ET.SubElement(root, 'MaxResults')
-        max_results.text = '1000000'
+        max_results.text = '1000000000'
 
         alt_search = ET.SubElement(root, 'AltSearchMode')
         alt_search.text = ""
 
-        tree = ET.ElementTree(root)
-        tree.write(self.output_file, "utf-8", "1.0")
+        #pretty print ftw! Can finally debug this stuff easier now....
+        xmlString = minidom.parseString(ET.tostring(root)).toprettyxml(indent='  ', encoding='utf-8')
+        with open(self.output_file, 'w') as w:
+            w.write(xmlString)
+        #tree = ET.ElementTree(root)
+        #tree.write(self.output_file, "utf-8", "1.0")
 
     @staticmethod
     def build_report_definition(report_def):
@@ -222,7 +260,33 @@ class BuildOverallTableXML:
             dimension = ET.SubElement(report_def, 'Dimension')
 
             dimension_name = ET.SubElement(dimension, 'Dimension')
-            dimension_name.set('Ref', self.dimension)
+
+            if self.custom_dimension_tuple == None:
+                dimension_name.set('Ref', self.dimension)
+            else:
+
+                build_custom_dimension(ET, dimension_name, self.custom_dimension_tuple)
+                '''
+                sub_def = ET.SubElement(dimension_name, 'Def')
+                field = ET.SubElement(sub_def, 'Field')
+                field.set('IsConfirmed', 'false')
+                field.set('ValueId', '0')
+                field.set('AnswerSetID', '0')
+                field.set('xsi:type', 'StringAnswerCell')
+
+                props = ET.SubElement(field, 'Properties')
+                name_value_one = ET.SubElement(props, 'NameValuePair')
+                name_value_one.set('Name', 'fieldgroup')
+                name_value_one.set('Value', self.custom_dimension_tuple[0])
+
+                name_value_two = ET.SubElement(props, 'NameValuePair')
+                name_value_two.set('Name', 'Field')
+                name_value_two.set('Value', self.custom_dimension_tuple[1])
+
+                multi_value = ET.SubElement(sub_def, 'MultiValue')
+                #May want to change this to be set as well eventually
+                multi_value.text = 'false'
+                '''
 
             ranges = ET.SubElement(dimension, 'Ranges')
             ranges.text = self.ranges
@@ -527,8 +591,9 @@ class BuildMVariateViewDefinition:
         alt_search = ET.SubElement(root, 'AltSearchMode')
         alt_search.text = ""
 
-        tree = ET.ElementTree(root)
-        tree.write(self.output_file, "utf-8", "1.0")
+        xmlString = minidom.parseString(ET.tostring(root)).toprettyxml(indent='  ', encoding='utf-8')
+        with open(self.output_file, 'w') as w:
+            w.write(xmlString)
 
 
 class BuildCountTableXML:
@@ -550,7 +615,13 @@ class BuildCountTableXML:
                  first_dimension_file=None,
                  second_dimension_file=None,
                  part_time='true',
-                 pfgid='false'):
+                 pfgid='false',
+                 custom_dimension_tuple=None,
+                 profile_count=None,
+                 sampling_method=None,
+                 group_by_first_dim=None,
+                 row_names=None,
+                 add_dim_definition=None):
 
         self.min_date = min_date + "T00:00:00"
         self.max_date = max_date + "T00:00:00"
@@ -570,6 +641,12 @@ class BuildCountTableXML:
         self.second_dimension_list = second_dimension_list
         self.part_time = part_time
         self.pfgid = pfgid
+        self.custom_dimension_tuple = custom_dimension_tuple
+        self.profile_count = profile_count
+        self.sampling_method = sampling_method
+        self.group_by_first_dim = group_by_first_dim
+        self.row_names = row_names
+        self.add_dim_definition = add_dim_definition
 
     def build_count_table_counts_file(self):
 
@@ -591,7 +668,12 @@ class BuildCountTableXML:
 
         dimension = ET.SubElement(report_def, 'Dimension')
         under_dimension = ET.SubElement(dimension, 'Dimension')
-        under_dimension.set('Ref', self.report_measure)
+
+        if self.custom_dimension_tuple == None:
+            under_dimension.set('Ref', self.report_measure)
+        else:
+
+            build_custom_dimension(ET, under_dimension, self.custom_dimension_tuple)
 
         ranges = ET.SubElement(dimension, "Ranges")
         ranges.text = self.ranges
@@ -605,8 +687,25 @@ class BuildCountTableXML:
         min_per_row = ET.SubElement(dimension, 'MinPerRow')
         min_per_row.text = self.min_per_row
 
-        include_profile_answer = ET.SubElement(report_def, 'IncludeProfileAnswer')
-        include_profile_answer.text = "false"
+        if self.report_definition != 'SampleDefinition':
+            include_profile_answer = ET.SubElement(report_def, 'IncludeProfileAnswer')
+            include_profile_answer.text = "false"
+
+        else:
+            profile_count = ET.SubElement(report_def, 'ProfileCount')
+            profile_count.text = self.profile_count
+
+            sampling_method = ET.SubElement(report_def, 'SamplingMethod')
+            sampling_method.text = self.sampling_method
+
+            group_by_first_dim = ET.SubElement(report_def, 'GroupByFirstDim')
+            group_by_first_dim.text = self.group_by_first_dim
+
+            row_names = ET.SubElement(report_def, 'RowNames')
+            row_names.text = self.row_names
+
+            add_dim_def = ET.SubElement(report_def, 'AddDimDefinition')
+            add_dim_def.text = self.add_dim_definition
 
         if self.first_dimension_file is None:
             dim_1_list = ET.SubElement(root, 'Dim1List')
@@ -658,8 +757,9 @@ class BuildCountTableXML:
         alt_search = ET.SubElement(root, 'AltSearchMode')
         alt_search.text = ""
 
-        tree = ET.ElementTree(root)
-        tree.write(self.output_file, "utf-8", "1.0")
+        xmlString = minidom.parseString(ET.tostring(root)).toprettyxml(indent='  ', encoding='utf-8')
+        with open(self.output_file, 'w') as w:
+            w.write(xmlString)
 
     def dimension_list_build(self, dimension_list, number_of_list):
 

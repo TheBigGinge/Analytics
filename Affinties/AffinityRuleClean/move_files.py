@@ -1,7 +1,7 @@
 import shutil
 import os
 import collections
-from Affinties.AffinityRuleClean import new_directories
+import new_directories
 
 
 class CopyFiles:

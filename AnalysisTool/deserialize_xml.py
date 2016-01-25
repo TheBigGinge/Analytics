@@ -70,6 +70,7 @@ class OverallDataCount(xml.sax.ContentHandler):
         self.row_name = ''
         self.buffer = ''
         self.counts = None
+        self.title = None
 
     def elem_str(self):
         return '/'.join(self.elements)
@@ -82,6 +83,7 @@ class OverallDataCount(xml.sax.ContentHandler):
         if elem_str == 'Reports/TableReport/Caption':
             self.position = 1
             self.buffer = ""
+            self.title = name
 
         if elem_str == 'Reports/TableReport/Count':
             self.counts
@@ -390,3 +392,137 @@ class OverallMediansListReturn(xml.sax.ContentHandler):
         if elem_str == 'Reports/TableReport/Row/Entry':
             if self.list_create:
                 self.eac_list.append(content)
+
+
+
+class TableDefinitionMediansListReturn(xml.sax.ContentHandler):
+
+    def __init__(self):
+
+        self.median_dictionary = {}
+        self.eac_list = []
+        self.elements = []
+        self.title = ''
+        self.row_name = ''
+        self.position = 0
+        self.list_create = 0
+        self.sep_name = ''
+        self.sep = 0
+
+    def elem_str(self):
+        return '/'.join(self.elements)
+
+    def startElement(self, name, attrs):
+        self.elements.append(name)
+
+        elem_str = self.elem_str()
+
+        if elem_str == 'Reports/TableReport/Caption':
+            self.row_name = ''
+            self.position = 1
+
+        if elem_str == 'Reports/TableReport/Row':
+            self.eac_list = []
+            self.list_create = 1
+            self.sep_name = ''
+            self.sep_name = attrs['Name']
+
+    def endElement(self, name):
+        elem_str = self.elem_str()
+
+        if elem_str == 'Reports/TableReport/Caption':
+            self.position = 0
+
+        if elem_str == 'Reports/TableReport/Row':
+            self.list_create = 0
+            self.sep = 0
+            if self.row_name not in self.median_dictionary[self.title].keys():
+                self.median_dictionary[self.title][self.row_name] = {}
+            self.median_dictionary[self.title][self.row_name][self.sep_name] = self.eac_list
+
+        # unwind part of the stack so the other event handlers know where they are
+        if self.elements and self.elements[-1] == name:
+            self.elements.pop()
+
+    def characters(self, content):
+        elem_str = self.elem_str()
+
+        if elem_str == 'Reports/TableReport/Caption':
+            if self.position:
+                self.row_name += content
+
+        if elem_str == 'Reports/TableReport/Row/Entry':
+            if self.list_create:
+                self.eac_list.append(content)
+
+        if elem_str == 'Reports/Caption':
+            self.title += content
+            self.median_dictionary[self.title] = {}
+
+
+class SampleDefinitionAlumniAnalytics(xml.sax.ContentHandler):
+    def __init__(self):
+
+        self.item_dictionary = {}
+        self.eac_list = []
+        self.elements = []
+        self.title = ''
+        self.row_name = ''
+        self.position = 0
+        self.list_create = 0
+        self.sep_name = ''
+        self.sep = 0
+
+    def elem_str(self):
+        return '/'.join(self.elements)
+
+    def startElement(self, name, attrs):
+        self.elements.append(name)
+
+        elem_str = self.elem_str()
+
+        if elem_str == 'Reports/TableReport/Caption':
+            self.row_name = ''
+            self.position = 1
+
+        if elem_str == 'Reports/TableReport/Row':
+            self.eac_list = []
+            self.list_create = 1
+            self.sep_name = ''
+            self.sep_name = attrs['Name']
+
+    def endElement(self, name):
+        elem_str = self.elem_str()
+
+        if elem_str == 'Reports/TableReport/Caption':
+            self.position = 0
+
+        if elem_str == 'Reports/TableReport/Row':
+            self.list_create = 0
+            self.sep = 0
+            if self.row_name not in self.item_dictionary[self.title].keys():
+                self.item_dictionary[self.title][self.row_name] = {}
+            self.item_dictionary[self.title][self.row_name][self.sep_name] = self.eac_list
+
+        # unwind part of the stack so the other event handlers know where they are
+        if self.elements and self.elements[-1] == name:
+            self.elements.pop()
+
+    def characters(self, content):
+        elem_str = self.elem_str()
+
+        if elem_str == 'Reports/TableReport/Caption':
+            if self.position:
+                self.row_name += content
+
+        if elem_str == 'Reports/TableReport/Row/Entry':
+            if self.list_create:
+                self.eac_list.append(content)
+
+        if elem_str == 'Reports/TableReport/Row/String':
+            if self.list_create:
+                self.eac_list.append(content)
+
+        if elem_str == 'Reports/Caption':
+            self.title += content
+            self.item_dictionary[self.title] = {}

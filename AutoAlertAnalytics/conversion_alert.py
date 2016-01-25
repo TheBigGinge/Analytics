@@ -1,20 +1,16 @@
 import sys
-sys.path.append("C:\\hg\\payscale\\users\\ryanm\\PayScaleAnalytics\\")
+from Constants import constant_strings as c
+sys.path.append(c.Constants().payscale_analytics)
+from Constants import constant_strings as c
 import AnalyticsTools.ConversionMetricsGUI.gui_interface as gui
 import AnalyticsTools.ConversionMetricsGUI.file_cycle as file_cycle
 import AnalyticsTools.ConversionMetricsGUI.database as database
 import os
 import datetime
 import smtplib
-from email.mime.image import MIMEImage
 from email.mime.multipart import MIMEMultipart
 from email.mime.text import MIMEText
-from email.mime.base import MIMEBase
-from email import Encoders
 
-log_path = '\\\\psfiler01\\data\\SurveyReports\\'
-alert_path = '\\\\filer01\\public\\Data_Analytics\\Consumer_Level_Conversion\\Alert_Files\\'
-alert_path_alt = '\\\\filer01\\public\\Data_Analytics\\Consumer_Level_Conversion\\Alert_Files\\'
 
 """
 This script checks the last two weeks of level conversion with the two weeks previous to those
@@ -27,7 +23,7 @@ def database_check():
         print "Database is up to date \n"
     else:
         print "Updating database \n"
-        all_consumer_logs = os.listdir(log_path)
+        all_consumer_logs = os.listdir(c.Constants().log_path)
         log_files_already_used = database.DataBaseQueries.pull_all_used_dates()
         file_cycle.ReadLogFiles(all_consumer_logs, log_files_already_used).run()
 
@@ -121,24 +117,20 @@ def auto_email_alert():
                  "JobOffer_"]
     #FROM = "DataAlerts@payscale.com"
     FROM = "Data Alerts@payscale.com"
-    TO = ["RyanM@payscale.com"]
-
-    attachment = 'C:\\users\\ryanm\\desktop\\JL.jpg'
+    TO = ["Data Team@payscale.com"]
 
     msg = MIMEMultipart()
     msg['Subject'] = "Conversion Level Alert"
-    msg['To'] = 'RyanM@payscale.com'
+    msg['To'] = 'Data Team@payscale.com'
 
     body = ""
+    alert_path = c.Constants().consumer_alert_files
     main_message = "The weekly conversion level tests have finished. You can find them at %s, %s, and %s" % \
-                   (os.path.normpath(alert_path_alt + file_list[0] + today + "_Conversion_Alert_Comparison.csv"),
-                    os.path.normpath(alert_path_alt + file_list[1] + today + "_Conversion_Alert_Comparison.csv"),
-                    os.path.normpath(alert_path_alt + file_list[2] + today + "_Conversion_Alert_Comparison.csv"))
-
-    msgText = MIMEText('<b>%s</b><br><img src="cid:C:\\users\\ryanm\\desktop\\JL.jpg"><br>' % body, 'html')
+                   (os.path.normpath(alert_path + file_list[0] + today + "_Conversion_Alert_Comparison.csv"),
+                    os.path.normpath(alert_path + file_list[1] + today + "_Conversion_Alert_Comparison.csv"),
+                    os.path.normpath(alert_path + file_list[2] + today + "_Conversion_Alert_Comparison.csv"))
 
     msg.attach(MIMEText(main_message))
-    #msg.attach(msgText)
 
     server = smtplib.SMTP('owa.payscale.com')
     server.sendmail(FROM, TO, msg.as_string())

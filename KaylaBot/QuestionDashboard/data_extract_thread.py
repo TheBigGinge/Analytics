@@ -1,6 +1,7 @@
 import zipfile
 import os
 import csv
+from Constants import  constant_strings as c
 
 from PyQt4 import QtCore
 
@@ -22,7 +23,7 @@ class ExtractDataThread(QtCore.QThread):
 
     def __init__(self):
         QtCore.QThread.__init__(self)
-        self.log_path = '\\\\psfiler01\\data\\SurveyReports\\'
+        self.log_path = c.Constants().log_path
         self.denominator_dict = {}
         self.xml_handler = None
         self.start_date = None
@@ -37,6 +38,11 @@ class ExtractDataThread(QtCore.QThread):
         self.start_date = this_date
         self.numerator_compare = self.start_date.date().toPyDate().strftime("%Y%m")
         self.denominator_compare = self.start_date.date().toPyDate().strftime("%Y%m%d")
+
+    def get_date_non_gui(self, this_date):
+        self.start_date = this_date
+        self.numerator_compare = this_date.strftime("%Y%m")
+        self.denominator_compare = this_date.strftime("%Y%m%d")
 
     def run(self):
 

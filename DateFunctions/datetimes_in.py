@@ -10,9 +10,13 @@ class DateTimeFormats:
         self.year = self.today.year
         self.day = self.today.day
 
-    def find_first_of_current_month(self):
+    def find_first_of_current_month(self, type_of_spacing = None):
 
-        return datetime.datetime(self.year, self.month, 1)
+        if type_of_spacing == None:
+            return datetime.datetime(self.year, self.month, 1)
+        else:
+            return datetime.datetime(self.year, self.month, 1).strftime("%Y" + type_of_spacing +
+                                                                     "%m" + type_of_spacing + "%d")
 
     def find_first_of_last_month(self):
 
@@ -93,7 +97,7 @@ class DateTimeFormats:
 
         return datetime.datetime(year, month, day).strftime("%Y" + type_of_spacing + "%m" + type_of_spacing + "%d")
 
-    def return_ymd_last_day_of_last_month(self):
+    def return_ymd_last_day_of_last_month(self, type_of_spacing = None):
 
         year = self.year
         month = self.month - 1
@@ -104,7 +108,13 @@ class DateTimeFormats:
 
         last_day = calendar.monthrange(year, month)[1]
 
-        return datetime.datetime(year, month, last_day)
+        if type_of_spacing == None:
+
+            return datetime.datetime(year, month, last_day)
+
+        else:
+            return datetime.datetime(year, month, last_day).strftime("%Y" + type_of_spacing +
+                                                                     "%m" + type_of_spacing + "%d")
 
     def return_year_month_as_string(self, spacing):
 

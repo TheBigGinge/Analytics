@@ -166,7 +166,7 @@ class PullTaskSeedProfiles:
 
 class PostToAnalysisTool:
 
-    def __init__(self, file_location, out_file):
+    def __init__(self, file_location, out_file, ui_update=None):
         """
         This is designed to give you a programmatic way to run analysis tool queries against
         psstats03. If you are going to bulk run queries please do so during off working hours
@@ -185,6 +185,7 @@ class PostToAnalysisTool:
         self.url = "http://psstats03:80/analysistoolservice.svc/report/anon"
         self.file_location = file_location
         self.out_file = out_file
+        self.ui_update = ui_update
 
     def run(self):
 
@@ -196,10 +197,17 @@ class PostToAnalysisTool:
                 r = requests.post(self.url, data=reader)
 
                 if r.status_code == 200:
+<<<<<<< HEAD
                     print "Successful pull. Writing to file"
+=======
+                    print "Successful pull. Writing to file \n"
+                    if self.ui_update is not None:
+                        self.ui_update.emit('Successful pull. Writing to file...')
+>>>>>>> origin/master
                 else:
                     print "Something went wrong with the Analysis Tool Post request. You'll need to try again. \n"
                     print "Status code: " + str(r.status_code)
 
                 for chunks in r.iter_content(1000):
                     writer.write(chunks)
+                print "Results writing completed."

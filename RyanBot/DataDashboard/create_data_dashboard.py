@@ -352,7 +352,7 @@ todays_date_alt = now[:7]
 psp_file_path = "\\\\filer01\\public\\Data Dashboards\\PSP Zip Reports\\"
 working_directory = os.getcwd()
 
-
+'''
 class PSPReportCompile:
 
     def __init__(self):
@@ -407,7 +407,7 @@ class PSPReportCompile:
 
             os.remove(report_file)
 #PSPReportCompile()
-
+'''
 
 class CreateUNCTab:
 
