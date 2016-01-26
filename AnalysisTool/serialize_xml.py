@@ -820,6 +820,26 @@ class BuildCountTableXML:
             string = ET.SubElement(dimension_list, 'string')
             string.text = "AS[.]AV{Location\Country\Canada}"
 
+                # ATH 1/26/2016
+
+        elif isinstance(file_to_use, list) and file_to_use[0] == r'Profile ID List':
+            answer_string = "AS[profiles]"
+            for i, profile_id in enumerate(file_to_use[1:], start=1):
+                answer_string += "AV{Profile\\ID\\" + str(profile_id) + "}"
+                if i < len(file_to_use[1:]):
+                    answer_string += " + "
+            string = ET.SubElement(dimension_list, 'string')
+            string.text = answer_string
+            # print answer_string
+            # print string.text
+
+        elif isinstance(file_to_use, list) and file_to_use[0] == r'Dimensions Formatted':
+            list_of_dimensions = file_to_use[1:]
+            for dimension in list_of_dimensions:
+                string = ET.SubElement(dimension_list, 'string')
+                string.text = dimension
+                # print dimension
+
     @staticmethod
     def mobile_survey_list_create(dimension_list, file_to_use):
 
