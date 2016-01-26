@@ -200,7 +200,6 @@ class PostToAnalysisTool:
 
                     print "Successful pull. Writing to file"
 
-                    print "Successful pull. Writing to file \n"
                     if self.ui_update is not None:
                         self.ui_update.emit('Successful pull. Writing to file...')
 
