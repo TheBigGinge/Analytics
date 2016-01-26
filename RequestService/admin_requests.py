@@ -197,13 +197,13 @@ class PostToAnalysisTool:
                 r = requests.post(self.url, data=reader)
 
                 if r.status_code == 200:
-<<<<<<< HEAD
+
                     print "Successful pull. Writing to file"
-=======
+
                     print "Successful pull. Writing to file \n"
                     if self.ui_update is not None:
                         self.ui_update.emit('Successful pull. Writing to file...')
->>>>>>> origin/master
+
                 else:
                     print "Something went wrong with the Analysis Tool Post request. You'll need to try again. \n"
                     print "Status code: " + str(r.status_code)
