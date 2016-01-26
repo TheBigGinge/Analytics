@@ -4,7 +4,7 @@ import os
 
 report_path = '\\\\filer01\\public\\Data Dashboards\\PSP Reports\\'
 report_path_alt = '\\\\filer01\\public\\Data Dashboards\\PSP Zip Reports\\'
-local_path = 'C:\\users\\ryanm\\desktop\\'
+local_path = 'C:\\users\\andrewh\\desktop\\TEST'
 
 all_logs = os.listdir(report_path)
 

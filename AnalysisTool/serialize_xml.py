@@ -198,7 +198,7 @@ class BuildOverallTableXML:
         part_time.text = self.part_time
 
         unique = ET.SubElement(root, 'Unique')
-        unique.text = 'true'
+        unique.text = 'false'   # ATH 1/22/2016 changed to false
 
         no_profile_list = ET.SubElement(root, 'NoProfileLists')
         no_profile_list.text = 'true'
@@ -241,7 +241,7 @@ class BuildOverallTableXML:
     def build_report_definition(report_def):
 
             show_empty = ET.SubElement(report_def, 'ShowEmptyRows')
-            show_empty.text = 'false'
+            show_empty.text = 'true'
 
             min_count = ET.SubElement(report_def, 'MinCountPerRow')
             min_count.text = '0'
@@ -365,6 +365,28 @@ class BuildOverallTableXML:
             string.text = "AS[.]AV{Location\Country\United States}"
             string = ET.SubElement(dimension_list, 'string')
             string.text = "AS[.]AV{Location\Country\Canada}"
+
+
+        # ATH 11/2/2015
+
+        elif isinstance(file_to_use, list) and file_to_use[0] == r'Profile ID List':
+            answer_string = "AS[profiles]"
+            for i, profile_id in enumerate(file_to_use[1:], start=1):
+                answer_string += "AV{Profile\\ID\\" + str(profile_id) + "}"
+                if i < len(file_to_use[1:]):
+                    answer_string += " + "
+            string = ET.SubElement(dimension_list, 'string')
+            string.text = answer_string
+            # print answer_string
+            # print string.text
+
+        elif isinstance(file_to_use, list) and file_to_use[0] == r'Dimensions Formatted':
+            list_of_dimensions = file_to_use[1:]
+            for dimension in list_of_dimensions:
+                string = ET.SubElement(dimension_list, 'string')
+                string.text = dimension
+                # print dimension
+
 
     @staticmethod
     def create_job_jobs_from_list(dimension_list, file_to_use):

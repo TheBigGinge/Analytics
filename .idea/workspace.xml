@@ -152,7 +152,6 @@
         <option value="$PROJECT_DIR$/DataAssignments/ryanm/get_zip.py" />
         <option value="$PROJECT_DIR$/DataAssignments/JobMatchTool/bulk_match_and_rank.py" />
         <option value="$PROJECT_DIR$/RyanBot/DataDashboard/create_data_dashboard.py" />
-        <option value="$PROJECT_DIR$/RyanBot/DataDashboard/zipfiles.py" />
         <option value="$PROJECT_DIR$/DataAssignments/JobMatchTool/check_file.py" />
         <option value="$PROJECT_DIR$/RequestService/elasticsearch_requests.py" />
         <option value="$PROJECT_DIR$/DataAssignments/JobMatchTool/bulk_match_and_rank_elastic_only.py" />
@@ -178,6 +177,7 @@
         <option value="$PROJECT_DIR$/AnalysisTool/extract_data_xml.py" />
         <option value="$PROJECT_DIR$/AnalysisTool/deserialize_xml.py" />
         <option value="$PROJECT_DIR$/ScheduledTasks/AlumniAnalytics/get_alumni_data.py" />
+        <option value="$PROJECT_DIR$/RyanBot/DataDashboard/zipfiles.py" />
       </list>
     </option>
   </component>

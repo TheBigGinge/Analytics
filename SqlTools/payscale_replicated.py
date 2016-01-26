@@ -38,7 +38,7 @@ class SqlServer:
         self.query_string = query_string
 
     def initialize_connection(self):
-        connection = 'DRIVER={SQL Server};SERVER=psdb14;DATABASE=' + self.data_base
+        connection = 'DRIVER={SQL Server};SERVER=psdb03;DATABASE=' + self.data_base
         self.conn = pyodbc.connect(connection)
         self.cursor = self.conn.cursor()
 
