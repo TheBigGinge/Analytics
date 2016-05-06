@@ -194,7 +194,7 @@ class PostToAnalysisTool:
 
         # Test to try and eliminate timeout errors
         test_bool = False
-        while test_bool == False:
+        while test_bool is False:
             with open(self.file_location, 'rb') as reader:
                 with open(self.out_file, 'wb') as writer:
                     # Sometimes the request seems to "hang." Implemented below to try the request up to 3 times before fail.
