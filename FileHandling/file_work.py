@@ -45,6 +45,9 @@ class FileHandler:
 
         [full_zip_file.extract(file_name, file_path) for file_name in file_list]
 
+        # ATH 3/22/2016
+        return len(file_list)
+
     def find_all_files(self, directory):
 
         assert os.path.isdir(directory) is True, '%s is not a directory' % str(directory)

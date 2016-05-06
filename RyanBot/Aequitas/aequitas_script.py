@@ -19,7 +19,7 @@ Quarter_Dict = {'01': 'Q1', '02': 'Q1', '03': 'Q1', '04': 'Q2', '05': 'Q2', '06'
 
 Write_Date = Quarter_Dict[Month] + ' ' + Year
 
-Report_Path = '\\\\filer01\\DBBACK\\AnalysisToolReports\\Results\\'
+Report_Path = r'\\prodsan02\PSAnalysisTool\analysistoolreports\Results\\'
 Writing_Path = '\\\\filer01\\public\\Data_Analytics\\Aequitas\\' + Write_Date + '\\'
 Stored_Files = '\\\\filer01\\public\\Data_Analytics\\Aequitas\\'
 
@@ -55,10 +55,12 @@ class GatherXmlData:
         self.boot_strap_and_write_lists(self.two_dig_start, 'Two Digit Starting Pay.csv')
         self.write_bad_reports(Bad_Report_List)
         self.two_dig_exp = self.xml_to_dictionary(Two_Digit_EXP_Files)
+        # print self.two_dig_exp
         self.boot_strap_and_write_lists(self.two_dig_exp, 'Two Digit Experienced Pay.csv')
         self.four_dig_start = self.xml_to_dictionary(Four_Digit_Start_Files)
         self.boot_strap_and_write_lists(self.four_dig_start, 'Four Digit Starting Pay.csv')
         self.four_dig_exp = self.xml_to_dictionary(Four_Digit_EXP_Files)
+        # print self.four_dig_exp
         self.boot_strap_and_write_lists(self.four_dig_exp, 'Four Digit Experienced Pay.csv')
         self.overall_start = self.overall_xml_to_dictionary(Overall_XML_Files[0])
         self.boot_strap_and_write_overall_lists(self.overall_start, 'Overall School Starting Pay.csv')
@@ -195,7 +197,7 @@ class GatherXmlData:
             count = int(School_Majors[ipeds_code][cip_code])
         except KeyError:
             count = 0
-            print cip_code
+            # print cip_code
             
         if count > 0:
             return True            

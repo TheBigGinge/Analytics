@@ -68,7 +68,8 @@ class BuildOverallTableXML:
                  row_count="0",
                  min_per_row="0",
                  string_builder_type=None,
-                 custom_dimension_tuple=None):
+                 custom_dimension_tuple=None,
+                 no_profile_lists='true'):
         """
         :param index_server:
             index server you'd like the machine to point at (localhost, psstats03, etc)
@@ -111,6 +112,8 @@ class BuildOverallTableXML:
             This is for type stringAnswerCell types of dimensions. This is a tuple with the 0th element being the
             fieldgroup and the 1st element being the field
             This is for custom dimensions
+        :param no_profile_lists:
+            "true" if you want the box checked. Passing "false" will slow down queries and increase size of results.
         :return:
             Text file of the analysis config xml
         """
@@ -137,6 +140,7 @@ class BuildOverallTableXML:
         self.min_per_row = min_per_row
         self.string_builder_type = string_builder_type
         self.custom_dimension_tuple = custom_dimension_tuple
+        self.no_profile_lists = no_profile_lists
 
 
     def build_overall_table_counts_file(self):
@@ -201,7 +205,8 @@ class BuildOverallTableXML:
         unique.text = 'false'   # ATH 1/22/2016 changed to false
 
         no_profile_list = ET.SubElement(root, 'NoProfileLists')
-        no_profile_list.text = 'true'
+        no_profile_list.text = self.no_profile_lists # ATH 4/18/2016 adding variable here so I can control
+        # no_profile_list.text = "false"
 
         pfgid = ET.SubElement(root, 'PFGID')
         pfgid.text = self.pfgid
@@ -725,7 +730,7 @@ class BuildCountTableXML:
         part_time.text = self.part_time
 
         unique = ET.SubElement(root, 'Unique')
-        unique.text = 'true'
+        unique.text = 'false'  # ATH 4-18-2016 changed to false
 
         no_profile_list = ET.SubElement(root, 'NoProfileLists')
         no_profile_list.text = 'true'

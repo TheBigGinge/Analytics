@@ -190,23 +190,43 @@ class PostToAnalysisTool:
     def run(self):
 
         report_name = self.file_location[self.file_location.rfind("\\") + 1:]
-        print "POSTing " + report_name + "..."
+        # print "POSTing " + report_name + "..."
 
-        with open(self.file_location, 'rb') as reader:
-            with open(self.out_file, 'wb') as writer:
-                r = requests.post(self.url, data=reader)
+        # Test to try and eliminate timeout errors
+        test_bool = False
+        while test_bool == False:
+            with open(self.file_location, 'rb') as reader:
+                with open(self.out_file, 'wb') as writer:
+                    # Sometimes the request seems to "hang." Implemented below to try the request up to 3 times before fail.
+                    try:
+                        r = requests.post(self.url, data=reader, timeout=30)
+                    except (requests.exceptions.Timeout, requests.exceptions.ConnectionError):
+                        print "At-At timeout. Trying request one more time........"
+                        try:
+                            r = requests.post(self.url, data=reader, timeout=60)
+                        except (requests.exceptions.Timeout, requests.exceptions.ConnectionError):
+                            print "60 Second At-At timeout. Trying request with 90 second timeout........"
+                            try:
+                                r = requests.post(self.url, data=reader, timeout=90)
+                            except:
+                                print "Pausing script for 10+ minutes as a last resort. Then will try request again........"
+                                import time
+                                time.sleep(1000)
+                                r = requests.post(self.url, data=reader, timeout=180)
+                    if r.status_code == 200:
 
-                if r.status_code == 200:
+                        # print "Successful pull. Writing to file"
 
-                    print "Successful pull. Writing to file"
+                        if self.ui_update is not None:
+                            self.ui_update.emit('Successful pull. Writing to file...')
 
-                    if self.ui_update is not None:
-                        self.ui_update.emit('Successful pull. Writing to file...')
+                    else:
+                        print "Something went wrong with the Analysis Tool Post request. You'll need to try again. \n"
+                        print "Status code: " + str(r.status_code)
 
-                else:
-                    print "Something went wrong with the Analysis Tool Post request. You'll need to try again. \n"
-                    print "Status code: " + str(r.status_code)
+                    for chunks in r.iter_content(1000):
+                        # print chunks
+                        writer.write(chunks)
 
-                for chunks in r.iter_content(1000):
-                    writer.write(chunks)
-                print "Results writing completed."
+                    # print "Results writing completed."
+                    test_bool = True

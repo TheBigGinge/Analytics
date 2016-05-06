@@ -31,7 +31,8 @@ def report_handler(target_class):
     except Exception as ex:
         print "An error occurred while trying to pull data from the xml file: "
         print ex.message
-        raise SystemExit
+        print target_class
+        # raise SystemExit
 
 
 def clean(s):
