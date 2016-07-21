@@ -51,6 +51,7 @@ class GatherXmlData:
     
     def __init__(self):
 
+
         self.two_dig_start = self.xml_to_dictionary(Two_Digit_Start_Files)
         self.boot_strap_and_write_lists(self.two_dig_start, 'Two Digit Starting Pay.csv')
         self.write_bad_reports(Bad_Report_List)
@@ -62,10 +63,21 @@ class GatherXmlData:
         self.four_dig_exp = self.xml_to_dictionary(Four_Digit_EXP_Files)
         # print self.four_dig_exp
         self.boot_strap_and_write_lists(self.four_dig_exp, 'Four Digit Experienced Pay.csv')
+
+        #self.two_dig_start = self.xml_to_dictionary(Two_Digit_Start_Files)
+        #self.boot_strap_and_write_lists(self.two_dig_start, 'Two Digit Starting Pay.csv')
+        #self.write_bad_reports(Bad_Report_List)
+        #self.two_dig_exp = self.xml_to_dictionary(Two_Digit_EXP_Files)
+        #self.boot_strap_and_write_lists(self.two_dig_exp, 'Two Digit Experienced Pay.csv')
+        #self.four_dig_start = self.xml_to_dictionary(Four_Digit_Start_Files)
+        #self.boot_strap_and_write_lists(self.four_dig_start, 'Four Digit Starting Pay.csv')
+        #self.four_dig_exp = self.xml_to_dictionary(Four_Digit_EXP_Files)
+        #self.boot_strap_and_write_lists(self.four_dig_exp, 'Four Digit Experienced Pay.csv')
+
         self.overall_start = self.overall_xml_to_dictionary(Overall_XML_Files[0])
-        self.boot_strap_and_write_overall_lists(self.overall_start, 'Overall School Starting Pay.csv')
+        #self.boot_strap_and_write_overall_lists(self.overall_start, 'Overall School Starting Pay.csv')
         self.overall_exp = self.overall_xml_to_dictionary(Overall_XML_Files[1])
-        self.boot_strap_and_write_overall_lists(self.overall_exp, 'Overall School Experienced Pay.csv')
+        #self.boot_strap_and_write_overall_lists(self.overall_exp, 'Overall School Experienced Pay.csv')
 
     @staticmethod
     def write_bad_reports(bad_report_list):

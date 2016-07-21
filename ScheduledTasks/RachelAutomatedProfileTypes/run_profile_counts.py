@@ -15,6 +15,7 @@ import csv
 #---------------------#
 profiles_by_type = 'Rachel Data Dashboard Active Profiles by Type'
 all_profiles_by_type = 'Rachel Data Dashboard All Profiles by Type'
+current_profile_counts = 'Rachel Data Dashboard Current Profile Counts'
 last_month_start = dates.return_ymd_first_of_last_month('-')
 last_month_end = dates.find_first_of_current_month('-')
 #last_month_start = '2015-10-01'
@@ -39,6 +40,7 @@ class ProfileCounts:
         self.current_job = {}
         self.alumni = {}
         self.informational = {}
+
 
 active_profiles = ProfileCounts()
 all_profiles = ProfileCounts()
@@ -73,7 +75,18 @@ anon.post_analysis_tool_query_pre_made_file_dims('psbuilder02a',
                                                  dimension=dimension,
                                                  ranges=ranges,
                                                  )
-
+'''
+anon.post_analysis_tool_query_pre_made_file_dims('psbuilder01a',
+                                                 current_profile_counts,
+                                                 last_month_start,
+                                                 last_month_end,
+                                                 main_filter,
+                                                 report_measure,
+                                                 return_type,
+                                                 '&& ALL',
+                                                 table_dimension,
+                                                 dimension=None,
+                                                 ranges=ranges)
 
 #Open up all the zipped presents!!!
 for zip_files in os.listdir(const.anon_out):
@@ -84,7 +97,8 @@ for zip_files in os.listdir(const.anon_out):
 for xml_files in os.listdir(const.anon_out):
     if ".xml" in xml_files:
         my_xml.fix_xml_encoding(const.anon_out, xml_files)
-
+'''
+'''
         if 'All Profiles' in xml_files and 'Rachel Data Dashboard' in xml_files:
             if '_0' in xml_files:
                 all_profiles.job_offer = dash.pull_job_data_from_xml(const.anon_out + xml_files)
@@ -172,4 +186,4 @@ with open(const.profile_counts + file_write_name, 'ab') as R:
 #clean up our dirty laundry
 for old_files in os.listdir(const.anon_out):
     if ('.zip' in old_files or '.xml' in old_files) and 'Rachel Data Dashboard' in old_files:
-        os.remove(const.anon_out + old_files)
+        os.remove(const.anon_out + old_files)'''

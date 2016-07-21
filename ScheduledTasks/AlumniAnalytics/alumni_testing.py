@@ -20,6 +20,7 @@ for xml_files in os.listdir(anon_out):
     if ".xml" in xml_files and 'Gina Alumni Analytics Query 1' in xml_files:
         my_xml.fix_xml_encoding(anon_out, xml_files)
 
+
     if 'Gina Alumni Analytics Query 4' in xml_files and '.xml' in xml_files:
         data_dict = extract.ExtractXMLData(anon_out + xml_files).table_def_medians_list_handler()
         main_key = 'Gina %s Query 04' % 1234
