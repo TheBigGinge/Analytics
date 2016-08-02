@@ -199,9 +199,10 @@ class PostToAnalysisTool:
                 with open(self.out_file, 'wb') as writer:
                     # Sometimes the request seems to "hang." Implemented below to try the request up to 3 times before fail.
                     try:
-                        r = requests.post(self.url, data=reader, timeout=30)
-                    except (requests.exceptions.Timeout, requests.exceptions.ConnectionError):
+                        r = requests.post(self.url, data=reader, timeout=None)   # timeout=None for data dashboard; timeout==30 for smaller queries
+                    except (requests.exceptions.Timeout, requests.exceptions.ConnectionError) as e:
                         print "At-At timeout. Trying request one more time........"
+                        print e
                         try:
                             r = requests.post(self.url, data=reader, timeout=60)
                         except (requests.exceptions.Timeout, requests.exceptions.ConnectionError):

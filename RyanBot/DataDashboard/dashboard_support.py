@@ -95,7 +95,7 @@ class DashboardSupport:
         dash_reports = rq.AnonReports(self.in_files,
                                       self.out_files)
 
-        dash_reports.post_analysis_tool_query_dim_list_create('localhost',
+        dash_reports.post_analysis_tool_query_dim_list_create('psstats03',
                                                               query_name,
                                                               start_date,
                                                               end_date,
