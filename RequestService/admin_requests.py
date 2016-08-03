@@ -190,7 +190,7 @@ class PostToAnalysisTool:
     def run(self):
 
         report_name = self.file_location[self.file_location.rfind("\\") + 1:]
-        # print "POSTing " + report_name + "..."
+        print "POSTing " + report_name + "..."
 
         # Test to try and eliminate timeout errors
         test_bool = False
@@ -216,7 +216,7 @@ class PostToAnalysisTool:
                                 r = requests.post(self.url, data=reader, timeout=180)
                     if r.status_code == 200:
 
-                        # print "Successful pull. Writing to file"
+                        print "Successful pull. Writing to file"
 
                         if self.ui_update is not None:
                             self.ui_update.emit('Successful pull. Writing to file...')
