@@ -81,12 +81,12 @@ class DataDashboard:
         dash_files = os.listdir(self.automated_file_path)
 
         [job_files.append(files) for files in dash_files if "Current Jobs_" in files]
-        '''
+
         query.run_iqr_queries("Ryan Data Dashboard IQR US PSP Job Rollups",
                               None,
                               "Current Rollups.csv",
                               2)
-        '''
+
         for i, job_file in enumerate(job_files):
             query.run_iqr_queries("Ryan Data Dashboard IQR US PayScale Main " + str(i),
                                   None,
