@@ -12,16 +12,16 @@ out_files = os.listdir(out_directory)
 #Pulling all admin tool data
 print "Setting up the data dashboard..."
 dashboard = data_dashboard.DataDashboard()
-dashboard.pull_current_admin_tool_values()
-dashboard.write_breadth_thirty_to_file()
-dashboard.create_job_csv_files()
-
-#Running all analysis tool queries
-print "Running analysis tool queries..."
-dashboard.run_analysis_tool_overall_jobs_reports()
-dashboard.run_analysis_tool_rollups_queries()
-dashboard.run_model_queries()
-dashboard.run_iqr_queries()
+# dashboard.pull_current_admin_tool_values()
+# dashboard.write_breadth_thirty_to_file()
+# dashboard.create_job_csv_files()
+#
+# #Running all analysis tool queries
+# print "Running analysis tool queries..."
+# dashboard.run_analysis_tool_overall_jobs_reports()
+# dashboard.run_analysis_tool_rollups_queries()
+# dashboard.run_model_queries()
+# dashboard.run_iqr_queries()
 dashboard.run_analysis_tool_unconfirmed_queries()
 
 #Unzipping files

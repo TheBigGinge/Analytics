@@ -199,7 +199,7 @@ class AnonReports:
                                               first_dimension_file=None,
                                               second_dimension_file=None,
                                               custom_dimension_tuple=None,
-                                              report_definition=None,
+                                              report_definition="CountTableDefinition",
                                               report_measure="Job Title Dimension",
                                               sub_filter='UnconfirmedOnly',
                                               min_per_row='0',
