@@ -9,24 +9,24 @@ writing_path = '\\\\filer01\\public\\Data Dashboards\\Automated Dashboard Files\
 out_files = os.listdir(out_directory)
 
 
-#Pulling all admin tool data
-print "Setting up the data dashboard..."
+# #Pulling all admin tool data
+# print "Setting up the data dashboard..."
 dashboard = data_dashboard.DataDashboard()
-dashboard.pull_current_admin_tool_values()
-dashboard.write_breadth_thirty_to_file()
-dashboard.create_job_csv_files()
-
-#Running all analysis tool queries
-print "Running analysis tool queries..."
-dashboard.run_analysis_tool_overall_jobs_reports()
-dashboard.run_analysis_tool_rollups_queries()
-dashboard.run_model_queries()
-dashboard.run_iqr_oqueries()
-dashboard.run_analysis_tool_unconfirmed_queries()
-
-#Unzipping files
-print "Unzipping all of the analysis tool files..."
-dashboard.unzip_all_the_files()
+# dashboard.pull_current_admin_tool_values()
+# dashboard.write_breadth_thirty_to_file()
+# dashboard.create_job_csv_files()
+#
+# #Running all analysis tool queries
+# print "Running analysis tool queries..."
+# dashboard.run_analysis_tool_overall_jobs_reports()
+# dashboard.run_analysis_tool_rollups_queries()
+# dashboard.run_model_queries()
+# dashboard.run_iqr_queries()
+# dashboard.run_analysis_tool_unconfirmed_queries()
+#
+# #Unzipping files
+# print "Unzipping all of the analysis tool files..."
+# dashboard.unzip_all_the_files()
 
 #Extract XML Data
 #Extracting Job Counts
@@ -466,6 +466,14 @@ class CreateUNCTab:
 
         return final_list
 
+    @staticmethod
+    def try_to_encode(str_):
+        try:
+            encoded = str_.encode("windows-1252")
+        except:
+            encoded = str_
+        return encoded
+
     def csv_write(self):
         print "Writing the UNC Job tab to file \n"
         header = ['Unconfirmed Job Titles passing Deactivation Rules (Min U.S. 4 Year Count of 10)',
@@ -476,7 +484,10 @@ class CreateUNCTab:
             writer = csv.writer(f, lineterminator='\n')
             writer.writerow(header)
             for row in self.cfm_data:
-                writer.writerow(row)
+                try:
+                    writer.writerow([CreateUNCTab.try_to_encode(x) for x in row])
+                except:
+                    continue
 
 CreateUNCTab()
 
